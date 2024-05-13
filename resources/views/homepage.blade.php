@@ -21,7 +21,7 @@
     <div class="collapse navbar-collapse"" id="navbarNavAltMarkup">
       <ul  class="navbar-nav ms-auto">
         <li>
-          <a class="nav-link" href="/login">Apaja</a>
+          <a class="nav-link" href="/login">Login</a>
         </li>
       </ul>
     </div>
@@ -30,19 +30,19 @@
 
     <div class="container-sm mt-5 border border-5 rounded" id="map" style="width: 1920px; height: 400px;">
         <div class="map">
-            <script> 
-        var map = L.map('map').setView([-6.706117145755258, 108.55783199712985], 15); 
-        
-        var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { 
-            maxZoom: 19, 
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' 
-        }).addTo(map); 
-        
+            <script>
+        var map = L.map('map').setView([-6.706117145755258, 108.55783199712985], 15);
+
+        var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
         </script>
         </div>
     </div>
 
-<footer class="fixed-bottom py-5 bg-body-tertiary">             
+<footer class="fixed-bottom py-5 bg-body-tertiary">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
             <span>Copyright &copy; Badar Login <?= date('Y');?></span>
