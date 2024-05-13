@@ -21,7 +21,7 @@
     <div class="collapse navbar-collapse"" id="navbarNavAltMarkup">
       <ul  class="navbar-nav ms-auto">
         <li>
-          <a class="nav-link" href="/login">Login</a>
+          <a class="nav-link" href="/login">Apaja</a>
         </li>
       </ul>
     </div>
