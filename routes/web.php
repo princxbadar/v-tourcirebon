@@ -7,9 +7,6 @@ Route::get('/', function () {
     return view('homepage', ['title'=>'Homepage']);
 });
 
-Route::get('/indexbbaru', function () {
-    return view('indexbbaru', ['title'=>'Homepage']);
-});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
