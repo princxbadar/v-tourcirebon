@@ -19,9 +19,7 @@ class isAdmin
         if(Auth::check()){
             return $next($request);
         } else {
-            dd('gabole gitu anjir');
+            return redirect(route('login'));
         }
-
-
     }
 }
