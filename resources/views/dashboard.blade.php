@@ -58,7 +58,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="{{ route('admin.manage-tour') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-location-dot"></i></div>
                                 3D-Tour Management
                             </a>
