@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function () {
 
 // For all the admin accessible site
 Route::middleware([isAdmin::class])->prefix('/admin')->name('admin.')->group(function () {
+    Route::resource('/markers',\App\Http\Controllers\adminController::class);
     Route::get('/tour-management', [adminController::class, 'view3DTourManagement'])->name('manage-tour');
 });
 
