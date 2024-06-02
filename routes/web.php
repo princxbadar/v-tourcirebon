@@ -6,6 +6,7 @@ use App\Http\Middleware\isAdmin;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
+    Route::resource('/markers',\App\Http\Controllers\Controller::class);
     return view('homepage', ['title'=>'Homepage']);
 });
 

@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('tempat');
             $table->text('keterangan');
-            $table->string('category');
+            $table->integer('categories_id');
             $table->string('latitude');
             $table->string('longitude');
             $table->string('link');
+            $table->timestamps();
 
         });
     }

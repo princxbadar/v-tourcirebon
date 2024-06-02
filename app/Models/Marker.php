@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use app\Models\Category;
 
 class Marker extends Model
 {
@@ -12,7 +13,7 @@ class Marker extends Model
     protected $fillable =[
         'tempat',
         'keterangan',
-        'category',
+        'categories_id',
         'latitude',
         'longitude',
         'link'
