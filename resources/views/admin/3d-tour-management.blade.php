@@ -5,13 +5,13 @@
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">Marker Management</li>
         </ol>
-        
+
         <!-- <a href="" class="btn btn-primary mb-2"">Add New Marker</a> -->
         <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Add New Coordinate
         </button>
 
-        
+
         <div class="card mb-4">
             <div class="card-body">
             <table class="table">
@@ -59,7 +59,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            <form action="{{route('markers.createMarker')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('admin.create-marker')}}" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Nama Tempat</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -71,9 +71,9 @@
                 <div class="mb-3">
                 <select class="form-select" aria-label="Default select example">
                     <option selected>Kategori</option>
-                    
+
                     @foreach ($categories as $data )
-                        
+
                     <option value="">{{$data->catName}}</option>
                     @endforeach
 
