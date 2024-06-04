@@ -17,6 +17,8 @@ class adminController extends Controller
         $markers = Marker::join('categories','categories.id', '=','markers.categories_id')->get();
         // ambil data kategori
         $data['categories'] = Category::all();
+
+        
         // Return View
         return view('admin.3d-tour-management',compact('markers'),$data);
     }
