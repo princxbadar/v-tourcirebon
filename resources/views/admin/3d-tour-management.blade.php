@@ -7,7 +7,7 @@
         </ol>
 
         <!-- <a href="" class="btn btn-primary mb-2"">Add New Marker</a> -->
-        <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#insertMarkerModal">
         Add New Coordinate
         </button>
 
@@ -51,22 +51,29 @@
     </div>
 </main>
 <!-- addMarkerModal -->
-    <div class="modal fade modal-xl" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade modal-xl" id="insertMarkerModal" tabindex="-1" aria-labelledby="insertMarkerModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Create Marker</h5>
+                <h5 class="modal-title" id="insertMarkerModalLabel">Create Marker</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
             <form action="{{route('admin.create-marker')}}" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Nama Tempat</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="tempat" name class="form-label">Nama Tempat</label>
+                    <input type="text" name="tempat" class="form-control @error('tempat') is-invalid @enderror" id="tempat" value="{{ old('tempat') }}" >
                 </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Keterangan</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <div class="form-group mb-3">
+                    <label class="font-weight-bold">Keterangan</label>
+                    <textarea class="form-control @error('keterangan') is-invalid @enderror" name="keterangan" rows="5" placeholder="Masukkan Keterangan">{{ old('keterangan') }}</textarea>
+                
+                    <!-- error message untuk Keterangan -->
+                    @error('description')
+                        <div class="alert alert-danger mt-2">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                 <select class="form-select" aria-label="Default select example">
@@ -81,22 +88,23 @@
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Latitude</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="latitude" name class="form-label">Latitude</label>
+                    <input type="text" name="latitude" class="form-control @error('latitude') is-invalid @enderror" id="latitude" value="{{ old('latitude') }}" >
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Longitude</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="longitude" name class="form-label">Longitude</label>
+                    <input type="text" name="longitude" class="form-control @error('longitude') is-invalid @enderror" id="longitude" value="{{ old('longitude') }}" >
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Link</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="link" name class="form-label">Link</label>
+                    <input type="text" name="link" class="form-control @error('link') is-invalid @enderror" id="link" value="{{ old('link') }}" >
                 </div>
+
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </div>
             </div>
         </div>
