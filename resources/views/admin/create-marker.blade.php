@@ -14,53 +14,8 @@
 
         <div class="card mb-4">
             <div class="card-body">
-            <table class="table">
-                <thead>
-                    <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nama Tempat</th>
-                    <th scope="col">Keterangan</th>
-                    <th scope="col">Kategori</th>
-                    <th scope="col">Latitude</th>
-                    <th scope="col">Logitude</th>
-                    <th scope="col">Link</th>
-                    <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php $i=1; ?>
-                @forelse ($markers as $marker)
-                    <tr>
-                    <th scope="row"><?= $i++; ?></th>
-                    <td>{{ $marker->tempat}}</td>
-                    <td>{{ $marker->keterangan }}</td>
-                    <td>{{ $marker->catName }}</td>
-                    <td>{{ $marker->latitude }}</td>
-                    <td>{{ $marker->longitude }}</td>
-                    <td>{{ $marker->link }}</td>
-                    </tr>
-                    @empty
-                    <div class="alert alert-danger">
-                     Data belum Tersedia.
-                    </div>
-                @endforelse
-                </tbody>
-            </table>
-            </div>
-        </div>
-    </div>
-</main>
-<!-- addMarkerModal -->
-    <div class="modal fade modal-xl" id="insertMarkerModal" tabindex="-1" aria-labelledby="insertMarkerModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="insertMarkerModalLabel">Create Marker</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
             <form action="{{route('admin.create-marker')}}" method="POST" enctype="multipart/form-data">
-                @csrf
+                {{ csrf_field() }}
                 <div class="mb-3">
                     <label for="tempat" name class="form-label">Nama Tempat</label>
                     <input type="text" name="tempat" class="form-control @error('tempat') is-invalid @enderror" id="tempat" value="{{ old('tempat') }}" >
@@ -82,7 +37,7 @@
 
                     @foreach ($categories as $data )
 
-                    <option value="categories_id">{{ $data->catName  }}</option>
+                    <option value="">{{$data->catName}}</option>
                     @endforeach
                     </select>
 
@@ -99,15 +54,10 @@
                     <label for="link" name class="form-label">Link</label>
                     <input type="text" name="link" class="form-control @error('link') is-invalid @enderror" id="link" value="{{ old('link') }}" >
                 </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-            </div>
+                </form>
             </div>
         </div>
     </div>
-
+</main>
 </x-dashboard-layout>

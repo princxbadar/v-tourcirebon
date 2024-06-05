@@ -29,23 +29,21 @@ class adminController extends Controller
      * @return RedirectResponse
      */
     
-    public function tambah()
+    public function create():View
     {
-        // ambil data kategori
-        $data['categories'] = Category::all();
-        return view('admin.3d-tour-management', $data);
+        return view('isAdmin.create-marker');
     }
      public function createMarker(Request $request): RedirectResponse
     {
         // Validasi Form
-        $request->validate(([
+        $request->validate([
             'tempat' => 'required',
             'Keterangan' => 'required',
             'categories_id' => 'required',
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
             'link' => 'required'
-        ]));
+        ]);
         
         // Buat Marker
         Marker::create([
