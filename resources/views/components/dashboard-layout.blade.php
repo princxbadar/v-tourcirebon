@@ -67,6 +67,10 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-location-dot"></i></div>
                                 3D-Tour Management
                             </a>
+                            <a class="nav-link" href="{{ route('admin.add-marker') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-location-dot"></i></div>
+                                3D-Tour Management
+                            </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 
                             </div>
@@ -94,25 +98,6 @@
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
-            <script>
-                // Message With Sweetalert
-                @if(session('success'))
-                Swal.fire({
-                    icon:"success",
-                    tittle: "BERHASIL",
-                    text:"{{session('success')}}",
-                    showConfirmButton:false,
-                    timer:2000
-                });
-                @elseif (session('error'))
-                Swal.fire({
-                    icon:"error",
-                    tittle: "GAGAL",
-                    text:"{{session('error')}}",
-                    showConfirmButton:false,
-                    timer:2000
-                });    
-                @endif
-            </script>
+            
     </body>
 </html>

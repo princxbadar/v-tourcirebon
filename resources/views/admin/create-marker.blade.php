@@ -37,9 +37,9 @@
 
                     @foreach ($categories as $data )
 
-                    <option value="">{{$data->catName}}</option>
+                    <option value="{{$data->id}}">{{$data->catName}}</option>
                     @endforeach
-                    </select>
+                </select>
 
                 </div>
                 <div class="mb-3">
@@ -54,7 +54,7 @@
                     <label for="link" name class="form-label">Link</label>
                     <input type="text" name="link" class="form-control @error('link') is-invalid @enderror" id="link" value="{{ old('link') }}" >
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">SAVE</button>
                 </form>
             </div>
         </div>

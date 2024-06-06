@@ -82,7 +82,7 @@
 
                     @foreach ($categories as $data )
 
-                    <option value="categories_id">{{ $data->catName  }}</option>
+                    <option value="{{$data->id}}">{{ $data->catName  }}</option>
                     @endforeach
                     </select>
 
