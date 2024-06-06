@@ -8,6 +8,12 @@
           attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
         
+        
+         
+            var marker = L.marker([-6.722116061248905, 108.56786691070188]).addTo(map);
+
+
+
         </script>
     </div>
 </div>

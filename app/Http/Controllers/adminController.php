@@ -15,6 +15,7 @@ class adminController extends Controller
         // Get All Marker
         // $markers = Marker::latest()->paginate(10);
         $markers = Marker::join('categories','categories.id', '=','markers.categories_id')->get();
+        
         // ambil data kategori
         $data['categories'] = Category::all();
 
@@ -62,5 +63,11 @@ class adminController extends Controller
 
         // redirect ke 3dTourManagement
         return redirect()->route('admin.manage-tour')->with(['success' => 'Data Berhasil Disimpan!']);
+    }
+
+    public function detailMarker(string $id): View {
+
+        $markers = Marker::findOrFail($id);
+        return view('admin.3d-tour-management',compact('markers'));
     }
 }

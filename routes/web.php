@@ -1,13 +1,25 @@
 <?php
 
+use App\Models\Marker;
+use App\Models\Category;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\homepageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\isAdmin;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    Route::resource('/markers',\App\Http\Controllers\Controller::class);
-    return view('homepage', ['title'=>'Homepage']);
+    Route::get('index',[homepageController::class, 'index'])->name('index');
+    $markers = Marker::join('categories','categories.id', '=','markers.categories_id')->get();
+        
+    // ambil data kategori
+    $data['categories'] = Category::all();
+
+    
+    // Return View
+
+    return view('homepage',compact('markers'),$data);
 });
 
 
@@ -25,8 +37,9 @@ Route::middleware('auth')->group(function () {
 Route::middleware([isAdmin::class])->prefix('/admin')->name('admin.')->group(function () {
     Route::resource('/markers',\App\Http\Controllers\adminController::class);
     Route::get('/tour-management', [adminController::class, 'view3DTourManagement'])->name('manage-tour');
-    Route::get('/add-marker', [adminController::class, 'create'])->name('add-marker');
+    Route::get('/detail-marker', [adminController::class, 'detailMarker'])->name('detail-marker');
     Route::post('/create-marker', [adminController::class, 'createMarker'])->name('create-marker');
 });
 
 require __DIR__.'/auth.php';
+Route::resource('/markers',\App\Http\Controllers\adminController::class);

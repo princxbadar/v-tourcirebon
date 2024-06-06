@@ -67,10 +67,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-location-dot"></i></div>
                                 3D-Tour Management
                             </a>
-                            <a class="nav-link" href="{{ route('admin.add-marker') }}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-location-dot"></i></div>
-                                3D-Tour Management
-                            </a>
+
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 
                             </div>

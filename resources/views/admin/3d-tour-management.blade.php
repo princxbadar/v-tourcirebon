@@ -37,7 +37,12 @@
                     <td>{{ $marker->catName }}</td>
                     <td>{{ $marker->latitude }}</td>
                     <td>{{ $marker->longitude }}</td>
-                    <td>{{ $marker->link }}</td>
+                    <td>{{ $marker->id}}</td>
+                    <td>
+                        <a href="" class="badge rounded-pill text-bg-primary" data-toggle="modal" data-target="#updateCoorModal">Update</a>
+                        <a href="" class="badge rounded-pill text-bg-info" data-bs-toggle="modal" data-bs-target="#detailModal{{$marker->id}}">Detail</a>
+                        <a href="" class="badge rounded-pill text-bg-danger" data-toggle="modal" data-target="">Delete</a>
+                    </td>
                     </tr>
                     @empty
                     <div class="alert alert-danger">
@@ -109,5 +114,31 @@
             </div>
         </div>
     </div>
+<!-- Detail Marker -->
 
+@forelse ($markers as $marker)
+<div class="modal fade modal-xl" id="detailModal{{$marker->id}}" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailModalLabel">Create Marker</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+            </div>
+            <div class="modal-body">
+                
+                <h1>{{$marker->id}}</h1>
+                
+            </div>
+            @empty
+            <div class="alert alert-danger">
+                                 Data belum Tersedia.
+            </div>    
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endforelse
 </x-dashboard-layout>
