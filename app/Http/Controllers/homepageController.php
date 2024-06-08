@@ -10,8 +10,6 @@ use Illuminate\View\View;
 class homepageController extends Controller
 {
     public function index(): View {
-
-        dd('memek');
         $markers = Marker::join('categories','categories.id', '=','markers.categories_id')->get();
         
         // ambil data kategori

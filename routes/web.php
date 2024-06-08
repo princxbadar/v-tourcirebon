@@ -9,18 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\isAdmin;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    Route::get('index',[homepageController::class, 'index'])->name('index');
-    $markers = Marker::join('categories','categories.id', '=','markers.categories_id')->get();
-        
-    // ambil data kategori
-    $data['categories'] = Category::all();
-
-    
-    // Return View
-
-    return view('homepage',compact('markers'),$data);
-});
+Route::get('/', [homepageController::class, 'index']);
 
 
 Route::get('/dashboard', function () {
@@ -42,4 +31,3 @@ Route::middleware([isAdmin::class])->prefix('/admin')->name('admin.')->group(fun
 });
 
 require __DIR__.'/auth.php';
-Route::resource('/markers',\App\Http\Controllers\adminController::class);

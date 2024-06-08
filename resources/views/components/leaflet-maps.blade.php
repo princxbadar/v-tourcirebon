@@ -9,9 +9,7 @@
         }).addTo(map);
         
         
-         
-            var marker = L.marker([-6.722116061248905, 108.56786691070188]).addTo(map);
-
+        
 
 
         </script>
