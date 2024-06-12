@@ -18,6 +18,6 @@ abstract class Controller
 
         
         // Return View
-        return view('homepage',compact('markers'),$data);
+        return view('homepage', compact('markers'), $data);
     }
 }

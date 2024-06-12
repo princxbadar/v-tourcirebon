@@ -63,10 +63,27 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
+                            <a class="nav-link" href="{{route('profile.edit')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-solid fa-user"></i></div>
+                                {{ __('Profile') }}
+                            </a>
+                            <div class="sb-sidenav-menu-heading">Tour Management</div>
                             <a class="nav-link" href="{{ route('admin.manage-tour') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-location-dot"></i></div>
                                 3D-Tour Management
                             </a>
+                            @if (Auth::user()->role == 'super_admin')
+                                <a class="nav-link" href="{{ route('manage.categories') }}">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                                    Categories Management
+                                </a>
+                            <div class="sb-sidenav-menu-heading">Super Admin</div>
+
+                                <a class="nav-link" href="{{ route('manage.accounts') }}">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-address-card"></i></div>
+                                    Manage Account
+                                </a>
+                            @endif
 
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 
