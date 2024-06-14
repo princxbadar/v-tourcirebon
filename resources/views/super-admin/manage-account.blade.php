@@ -54,7 +54,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            <form action="{{route('manage.create-user')}}" method="POST" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('manage.create-user') }}">
                 @csrf
                 <div class="mb-3">
                     <label for="name" name class="form-label">Name</label>
@@ -67,6 +67,10 @@
                 <div class="mb-3">
                     <label for="password" name class="form-label">Password</label>
                     <input type="password" name="password" required autocomplete="new-password" class="form-control @error('password') is-invalid @enderror" id="password" value="{{ old('password') }}" >
+                </div>
+                <div class="mb-3">
+                    <label for="password_confirmation" name class="form-label">Password Confirmation</label>
+                    <input type="password" name="password_confirmation" required autocomplete="new-password" class="form-control @error('password') is-invalid @enderror" id="password_confirmation" value="{{ old('password') }}" >
                 </div>
 
             </div>
