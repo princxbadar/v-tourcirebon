@@ -50,7 +50,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <x-secondary-button x-on:click="$dispatch('close')">{{ __('Cancel') }}</x-secondary-button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <x-danger-button class="ms-3">{{ __('Delete Account') }}</x-danger-button>
         </div>
         </form>
