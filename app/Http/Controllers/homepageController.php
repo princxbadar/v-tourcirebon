@@ -19,4 +19,9 @@ class homepageController extends Controller
         // Return View
         return view('homepage',compact('markers'),$data);
     }
+    public function detailMarker(string $id): View {
+
+        $markers = Marker::findOrFail($id);
+        return view('homepage',compact('markers'));
+    }
 }

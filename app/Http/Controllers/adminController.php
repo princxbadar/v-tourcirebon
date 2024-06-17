@@ -49,19 +49,23 @@ class adminController extends Controller
             $request->validate([
                 'tempat' => 'required',
                 'keterangan' => 'required',
+                'price'=> 'required|numeric',
                 'latitude' => 'required|numeric',
                 'longitude' => 'required|numeric',
-                'link' => 'required'
+                'link' => 'required',
+                'navlink' => 'required'
             ]);
     
             // Data preparation
             $params = [
                 'tempat' => $request->tempat,
                 'keterangan' => $request->keterangan,
-                'categories_id' => (int) $request->categories_id, // Assuming categories_id is optional and needs conversion
+                'categories_id' => (int) $request->categories_id,
+                'price' =>$request->price,
                 'latitude' => $request->latitude,
                 'longitude' => $request->longitude,
-                'link' => $request->link
+                'link' => $request->link,
+                'navlink' => $request->navlink
             ];
     
             // Marker creation

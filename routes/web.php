@@ -3,6 +3,7 @@
 use App\Models\Marker;
 use App\Models\Category;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\welcomeController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\homepageController;
 use App\Http\Controllers\ProfileController;
@@ -11,6 +12,7 @@ use App\Http\Middleware\isAdmin;
 use App\Http\Middleware\IsSuperAdmin;
 use Illuminate\Support\Facades\Route;
 
+// Route::get('/', [welcomeController::class, 'index']);
 Route::get('/', [homepageController::class, 'index']);
 
 

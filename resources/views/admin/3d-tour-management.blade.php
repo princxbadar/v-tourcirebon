@@ -20,9 +20,11 @@
                         <th scope="col">Nama Tempat</th>
                         <th scope="col">Keterangan</th>
                         <th scope="col">Kategori</th>
+                        <th scope="col">Harga</th>
                         <th scope="col">Latitude</th>
                         <th scope="col">Logitude</th>
                         <th scope="col">Link</th>
+                        <th scope="col">Nav Link</th>
                         <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -34,9 +36,11 @@
                             <td>{{ $marker->tempat}}</td>
                             <td>{{ $marker->keterangan }}</td>
                             <td>{{ $marker->catName }}</td>
+                            <td>{{ "Rp " . number_format($marker->price,2,',','.') }}</td>
                             <td>{{ $marker->latitude }}</td>
                             <td>{{ $marker->longitude }}</td>
-                            <td>{{ $marker->id}}</td>
+                            <td>{{ $marker->id }}</td>
+                            <td>{{ $marker->navlink }}</td>
                             <td>
                                 <a href="" class="badge rounded-pill text-bg-primary" data-toggle="modal" data-target="#updateCoorModal">Update</a>
                                 <a href="" class="badge rounded-pill text-bg-info" data-bs-toggle="modal" data-bs-target="#detailModal{{$marker->id}}">Detail</a>
@@ -90,6 +94,10 @@
 
                 </div>
                 <div class="mb-3">
+                    <label for="price" name class="form-label">Range Harga</label>
+                    <input type="text" name="price" class="form-control @error('price') is-invalid @enderror" id="price" value="{{ old('price') }}" >
+                </div>
+                <div class="mb-3">
                     <label for="latitude" name class="form-label">Latitude</label>
                     <input type="text" name="latitude" class="form-control @error('latitude') is-invalid @enderror" id="latitude" value="{{ old('latitude') }}" >
                 </div>
@@ -100,6 +108,10 @@
                 <div class="mb-3">
                     <label for="link" name class="form-label">Link</label>
                     <input type="text" name="link" class="form-control @error('link') is-invalid @enderror" id="link" value="{{ old('link') }}" >
+                </div>
+                <div class="mb-3">
+                    <label for="navlink" name class="form-label">Navigation Link</label>
+                    <input type="text" name="navlink" class="form-control @error('navlink') is-invalid @enderror" id="navlink" value="{{ old('navlink') }}" >
                 </div>
 
             </div>

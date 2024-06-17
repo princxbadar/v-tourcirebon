@@ -14,8 +14,10 @@ class Marker extends Model
         'tempat',
         'keterangan',
         'categories_id',
+        'price',
         'latitude',
         'longitude',
         'link',
+        'navlink',
     ];
 }
