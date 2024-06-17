@@ -13,7 +13,7 @@ use App\Http\Middleware\IsSuperAdmin;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', [welcomeController::class, 'index']);
-Route::get('/', [homepageController::class, 'index']);
+Route::get('/', [homepageController::class, 'index', 'detailMarker']);
 
 
 Route::get('/dashboard', function () {

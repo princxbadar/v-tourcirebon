@@ -32,11 +32,13 @@
   @foreach ($markers as $mrkr)
   <div class="col-12 col-md-6 col-lg-4">
     <div class="card">
-        <a href="youtube.com"><img src="{{ asset('image/kanoman1.jpeg') }}" class="card-img-top" alt="Project1"></a>
+        <a href="" >
+          <img src="{{ asset('image/kanoman1.jpeg') }}" class="card-img-top" alt="Project1">
+        </a>
         
         <div class="card-body">
         <h5 class="card-title text-center">{{$mrkr->tempat}}</h5>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">More Info</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailModal{{$mrkr->id}}">More Info</button>
         </div>
         <div class="card-footer text-body-secondary text-center">V-Tour</div>
       </div>
@@ -52,11 +54,14 @@
 </section>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@foreach ($markers as $mrkr)
+  
+
+<div class="modal fade" id="#detailModal{{$mrkr->id}}" tabindex="-1" aria-labelledby="#detailModal{{$mrkr->id}}Label" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="#detailModal{{$mrkr->id}}Label">Modal title</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -71,5 +76,5 @@
     </div>
   </div>
 </div>
-
+@endforeach
 </x-layout>
