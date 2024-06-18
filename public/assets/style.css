@@ -4,3 +4,19 @@ body{
 .bg-color{
     background-color: #e9ecef;
 }
+.banner{
+    position: relative;
+}
+.banner img{
+    max-width: 100%;
+    height: auto;
+
+}
+.banner-text{
+    position: absolute;
+    top: 20%;
+    left: 45%;
+    color: white;
+    justify-content: center;
+}
+

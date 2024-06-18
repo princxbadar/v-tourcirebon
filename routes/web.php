@@ -13,7 +13,14 @@ use App\Http\Middleware\IsSuperAdmin;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', [welcomeController::class, 'index']);
-Route::get('/', [homepageController::class, 'index', 'detailMarker']);
+
+ 
+Route::get('/', function () {
+    return view('index');
+});
+Route::get('/homepage', [homepageController::class, 'index'])->name('homepage');
+
+Route::get('/detail-page/{id}', [homepageController::class, 'detail'])->name('detail');
 
 
 Route::get('/dashboard', function () {
@@ -32,6 +39,7 @@ Route::middleware([isAdmin::class])->prefix('/admin')->name('admin.')->group(fun
     Route::get('/tour-management', [adminController::class, 'view3DTourManagement'])->name('manage-tour');
     Route::get('/detail-marker', [adminController::class, 'detailMarker'])->name('detail-marker');
     Route::post('/create-marker', [adminController::class, 'createMarker'])->name('create-marker');
+    Route::patch('/update-marker', [adminController::class, 'update'])->name('update-marker');
 });
 
 Route::middleware([IsSuperAdmin::class])->prefix('/manage')->name('manage.')->group(function () {

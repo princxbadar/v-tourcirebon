@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 
 class adminController extends Controller
@@ -83,6 +84,34 @@ class adminController extends Controller
     public function detailMarker(string $id): View {
 
         $markers = Marker::findOrFail($id);
+
         return view('admin.3d-tour-management',compact('markers'));
     }
+
+    public function update(Request $request,Marker $marker): RedirectResponse
+    {
+        $request->validate([
+            'tempat' => 'required',
+            'keterangan' => 'required',
+            'price'=> 'required|numeric',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
+            'link' => 'required',
+            'navlink' => 'required'
+        ]);
+        // get data by ID
+
+        $marker->update([
+            'tempat' => $request->tempat,
+            'keterangan' => $request->keterangan,
+            'price' => $request->price,
+            'latitude'=> $request->latitude,
+            'longitude'=> $request->longitude,
+            'link' => $request->link,
+            'navlink' => $request->navlink
+        ]);
+        dd($marker);
+        return redirect()->route('admin.manage-tour')->with(['success' => 'Data Berhasil Disimpan!']);
+    }
+
 }

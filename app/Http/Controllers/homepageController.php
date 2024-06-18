@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Marker;
 use App\Models\Category;
+use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
 
 class homepageController extends Controller
@@ -19,9 +20,9 @@ class homepageController extends Controller
         // Return View
         return view('homepage',compact('markers'),$data);
     }
-    public function detailMarker(string $id): View {
-
-        $markers = Marker::findOrFail($id);
-        return view('detail-place',compact('markers'));
+    public function detail(): View {
+       $id = Route::current()->parameter('id');
+       $markers = Marker::findOrFail($id);
+       return view('detail',compact('markers'));
     }
 }

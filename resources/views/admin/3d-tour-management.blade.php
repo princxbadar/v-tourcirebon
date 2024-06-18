@@ -124,7 +124,7 @@
         </div>
     </div>
 
-    @forelse ($markers as $marker)
+    @foreach ($markers as $marker)
         <div class="modal fade modal-xl" id="detailModal{{$marker->id}}" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -134,20 +134,64 @@
 
                     </div>
                     <div class="modal-body">
-                        
-                        <h1>{{$marker->id}}</h1>
-                        
-                    </div>
- 
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <form action="{{route('admin.update-marker', $marker->id)}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                     @method('patch')
+                <div class="mb-3">
+                    <label for="tempat" name class="form-label">Nama Tempat</label>
+                    <input type="text" name="tempat" class="form-control @error('tempat') is-invalid @enderror" id="tempat" value="{{ $marker->tempat }}" >
+                </div>
+                <div class="form-group mb-3">
+                    <label class="font-weight-bold">Keterangan</label>
+                    <textarea class="form-control @error('keterangan') is-invalid @enderror" name="keterangan" rows="5" placeholder="Masukkan Keterangan">{{ $marker->keterangan }}</textarea>
+
+                    @error('description')
+                        <div class="alert alert-danger mt-2">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                <select name="categories_id" class="form-control @error('categories_id') is-invalid @enderror" aria-label="Default select example">
+                    <option selected>Kategori</option>
+
+                    @foreach ($categories as $data )
+
+                    <option value="{{$data->id}}">{{ $data->catName  }}</option>
+                    @endforeach
+                    </select>
+
+                </div>
+                <div class="mb-3">
+                    <label for="price" name class="form-label">Range Harga</label>
+                    <input type="text" name="price" class="form-control @error('price') is-invalid @enderror" id="price" value="{{ $marker->price }}" >
+                </div>
+                <div class="mb-3">
+                    <label for="latitude" name class="form-label">Latitude</label>
+                    <input type="text" name="latitude" class="form-control @error('latitude') is-invalid @enderror" id="latitude" value="{{ $marker->latitude }}" >
+                </div>
+                <div class="mb-3">
+                    <label for="longitude" name class="form-label">Longitude</label>
+                    <input type="text" name="longitude" class="form-control @error('longitude') is-invalid @enderror" id="longitude" value="{{ $marker->longitude }}" >
+                </div>
+                <div class="mb-3">
+                    <label for="link" name class="form-label">Link</label>
+                    <input type="text" name="link" class="form-control @error('link') is-invalid @enderror" id="link" value="{{ $marker->link }}" >
+                </div>
+                <div class="mb-3">
+                    <label for="navlink" name class="form-label">Navigation Link</label>
+                    <input type="text" name="navlink" class="form-control @error('navlink') is-invalid @enderror" id="navlink" value="{{ $marker->navlink }}" >
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
                     </div>
                 </div>
             </div>
         </div>
-    @empty
-    <div class="alert alert-danger">
-                        Data belum Tersedia.
-                    </div>   
-    @endforelse
+
+    @endforeach
 </x-dashboard-layout>
