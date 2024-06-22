@@ -5,9 +5,13 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse"" id="navbarNavAltMarkup">
-      <ul  class="navbar-nav ms-auto">
+      <ul class="navbar-nav ms-auto">
         <li>
-          <a class="nav-link" href="{{ route('login') }}">Login</a>
+            @auth
+                <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+            @else
+                <a class="nav-link" href="{{ route('login') }}">Login</a>
+            @endauth
         </li>
       </ul>
     </div>

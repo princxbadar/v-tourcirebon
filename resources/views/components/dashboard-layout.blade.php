@@ -34,21 +34,21 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <!-- Edit Profile -->
-                    <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                    </x-dropdown-link>    
-                    <!-- LogOut -->
-                    <form method="POST" action="{{ route('logout') }}">
+                        <!-- Edit Profile -->
+                        <x-dropdown-link :href="route('profile.edit')">
+                                {{ __('Profile') }}
+                        </x-dropdown-link>
+                        <!-- LogOut -->
+                        <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
                             <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                                onclick="event.preventDefault();
+                                this.closest('form').submit();"
+                            >
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
-                    </form>
-                        
+                        </form>
                     </ul>
                 </li>
             </ul>
@@ -86,7 +86,7 @@
                             @endif
 
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                                
+
                             </div>
                         </div>
                     </div>
@@ -97,14 +97,14 @@
                 </nav>
             </div>
             <div id="layoutSidenav_content">
-            {{ $slot }}
+                {{ $slot }}
                 <x-dashboard-footer></x-dashboard-footer>
             </div>
         </div>
         <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
         <script>
             CKEDITOR.replace( 'keterangan' );
-            </script>
+        </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <!-- <script src="js/scripts.js"></script> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
@@ -112,6 +112,5 @@
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
-            
     </body>
 </html>
