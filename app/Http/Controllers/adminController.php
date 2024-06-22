@@ -16,7 +16,7 @@ class adminController extends Controller
         // Get All Marker
         // $markers = Marker::latest()->paginate(10);
         $markers = Marker::join('categories', 'categories.id', '=', 'markers.categories_id')
-                 ->select('markers.id', 'markers.tempat', 'markers.keterangan', 
+                 ->select('markers.id', 'markers.tempat', 'markers.keterangan', 'markers.latitude','markers.longitude',
                           'markers.categories_id', 'markers.image','price','markers.link','markers.navlink', 'categories.catName AS catName') // Alias for category name
                  ->get();
 
