@@ -40,6 +40,8 @@ class adminController extends Controller
             'tempat' => 'required',
             'keterangan' => 'required',
             'image' => 'required|image|mimes:jpeg,jpg,png',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
             'categories_id'=>'required',
             'price'=> 'required|numeric',
             'link'=> 'required',
@@ -54,6 +56,8 @@ class adminController extends Controller
             'keterangan' => $request->keterangan,
             'categories_id' => $request->categories_id,
             'image'=> $image->hashName(),
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
             'price' => $request->price,
             'link' => $request->link,
             'navlink' => $request->navlink

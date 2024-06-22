@@ -17,6 +17,8 @@ return new class extends Migration
             $table->text('keterangan');
             $table->integer('categories_id');
             $table->string('image');
+            $table->string('longitude');
+            $table->string('latitude');
             $table->bigInteger('price');
             $table->text('link');
             $table->text('navlink');

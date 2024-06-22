@@ -34,6 +34,8 @@
                             <td>{{ $marker->tempat}}</td>
                             <td>{{ $marker->keterangan }}</td>
                             <td>{{ $marker->catName }}</td>
+                            <td>{{ $marker->latitude }}</td>
+                            <td>{{ $marker->longitude }}</td>
                             <td>{{ $marker->image }}</td>
                             <td>{{ "Rp " . number_format($marker->price,2,',','.') }}</td>
                             <td>{{ $marker->navlink }}</td>
@@ -88,6 +90,14 @@
                     @endforeach
                     </select>
 
+                </div>
+                <div class="mb-3">
+                    <label for="latitude" name class="form-label">Latitude</label>
+                    <input type="text" name="latitude" class="form-control @error('latitude') is-invalid @enderror" id="latitude" value="{{ old('latitude') }}" >
+                </div>
+                <div class="mb-3">
+                    <label for="longitude" name class="form-label">Nama Tempat</label>
+                    <input type="text" name="longitude" class="form-control @error('longitude') is-invalid @enderror" id="longitude" value="{{ old('longitude') }}" >
                 </div>
                 <div class="mb-3">
                     <label for="price" name class="form-label">Range Harga</label>
