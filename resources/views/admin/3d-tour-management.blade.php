@@ -39,12 +39,13 @@
                                 <td>{{ $marker->latitude }}</td>
                                 <td>{{ $marker->longitude }}</td>
                                 <td>{{ $marker->image }}</td>
-                                <td>{{ "Rp " . number_format($marker->price,2,',','.') }}</td>
+                                <td>{{ "Rp " . number_format($marker->price_start,2,',','.') }}</td>
                                 <td>{{ $marker->navlink }}</td>
                                 <td>
-                                    <a href="" class="badge rounded-pill text-bg-primary" data-toggle="modal" data-target="#updateCoorModal">Update</a>
-                                    <a href="" class="badge rounded-pill text-bg-info" data-bs-toggle="modal" data-bs-target="#detailModal{{$marker->id}}">Detail</a>
-                                    <a href="" class="badge rounded-pill text-bg-danger" data-toggle="modal" data-target="">Delete</a>
+                                    <a href="" class="badge rounded-pill text-bg-info" data-bs-toggle="modal" data-bs-target="#detailModal{{$marker->id}}">Update</a>
+                                    <form action="{{ route('admin.delete-marker', $marker->id) }}" method="POST">
+                                        @csrf  @method('DELETE') <button type="submit" class="badge rounded-pill text-bg-danger">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                         @empty
@@ -96,18 +97,22 @@
                     </div>
                     <div class="mb-3">
                         <label for="latitude" name class="form-label">Latitude</label>
-                        <input type="number" name="latitude" class="form-control @error('latitude') is-invalid @enderror" id="latitude" value="{{ old('latitude') }}" >
+                        <input type="text" name="latitude" class="form-control @error('latitude') is-invalid @enderror" id="latitude" value="{{ old('latitude') }}" >
                     </div>
                     <div class="mb-3">
                         <label for="longitude" name class="form-label">Longitude</label>
-                        <input type="number" name="longitude" class="form-control @error('longitude') is-invalid @enderror" id="longitude" value="{{ old('longitude') }}" >
+                        <input type="text" name="longitude" class="form-control @error('longitude') is-invalid @enderror" id="longitude" value="{{ old('longitude') }}" >
                     </div>
                     <div class="mb-3">
-                        <label for="price" name class="form-label">Range Harga</label>
-                        <input type="number" name="price" class="form-control @error('price') is-invalid @enderror" id="price" value="{{ old('price') }}" >
+                        <label for="price_start" name class="form-label">Start Harga</label>
+                        <input type="number" name="price_start" class="form-control @error('price_start') is-invalid @enderror" id="price_start" value="{{ old('price_start') }}" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="price_end" name class="form-label">End Harga</label>
+                        <input type="number" name="price_end" class="form-control @error('price_end') is-invalid @enderror" id="price_end" value="{{ old('price_end') }}" >
                     </div>
                     <div class="form-group mb-3">
-                        <label class="font-weight-bold">IMAGE</label>
+                        <label class="font-weight-bold">Image</label>
                         <input type="file" class="form-control @error('image') is-invalid @enderror" name="image">
 
                         <!-- error message untuk image -->
@@ -156,53 +161,88 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
                     </div>
-                    <form action="{{route('admin.update-marker', $marker->id)}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('admin.update-marker', ['id' => $marker->id])}}" method="POST" enctype="multipart/form-data">
                         <div class="modal-body">
                         @csrf
                         @method('patch')
                         <div class="mb-3">
-                            <label for="tempat" name class="form-label">Nama Tempat</label>
-                            <input type="text" name="tempat" class="form-control @error('tempat') is-invalid @enderror" id="tempat" value="{{ $marker->tempat }}" >
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="font-weight-bold">Keterangan</label>
-                            <textarea class="form-control @error('keterangan') is-invalid @enderror" name="keterangan" rows="5" placeholder="Masukkan Keterangan">{{ $marker->keterangan }}</textarea>
+                            <div class="mb-3">
+                                <label for="tempat" name class="form-label">Nama Tempat</label>
+                                <input type="text" name="tempat" class="form-control @error('tempat') is-invalid @enderror" id="tempat" value="{{ $marker->tempat }}" >
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="font-weight-bold">Keterangan</label>
+                                <textarea class="form-control @error('keterangan') is-invalid @enderror" name="keterangan" rows="5" placeholder="Masukkan Keterangan">{{$marker->keterangan}}</textarea>
 
-                            @error('description')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                        <select name="categories_id" class="form-control @error('categories_id') is-invalid @enderror" aria-label="Default select example">
-                            <option selected>Kategori</option>
+                                @error('description')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                            <select name="categories_id" class="form-control @error('categories_id') is-invalid @enderror" aria-label="Default select example">
+                                <option selected>Kategori</option>
 
-                            @foreach ($categories as $data )
+                                @foreach ($categories as $data )
 
-                            <option value="{{$data->id}}">{{ $data->catName  }}</option>
-                            @endforeach
-                            </select>
+                                <option value="{{$data->id}}">{{ $data->catName  }}</option>
+                                @endforeach
+                                </select>
 
-                        </div>
-                        <div class="mb-3">
-                            <label for="price" name class="form-label">Range Harga</label>
-                            <input type="text" name="price" class="form-control @error('price') is-invalid @enderror" id="price" value="{{ $marker->price }}" >
-                        </div>
-                        <div class="mb-3">
-                            <label for="image" name class="form-label">Image</label>
-                            <input type="text" name="image" class="form-control @error('image') is-invalid @enderror" id="image" value="{{ $marker->image }}" >
-                        </div>
-                        <div class="mb-3">
-                            <label for="navlink" name class="form-label">Navigation Link</label>
-                            <input type="text" name="navlink" class="form-control @error('navlink') is-invalid @enderror" id="navlink" value="{{ $marker->navlink }}" >
-                        </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="latitude" name class="form-label">Latitude</label>
+                                <input type="text" name="latitude" class="form-control @error('latitude') is-invalid @enderror" id="latitude" value="{{ $marker->latitude }}" >
+                            </div>
+                            <div class="mb-3">
+                                <label for="longitude" name class="form-label">Longitude</label>
+                                <input type="text" name="longitude" class="form-control @error('longitude') is-invalid @enderror" id="longitude" value="{{ $marker->longitude }}" >
+                            </div>
+                            <div class="mb-3">
+                                <label for="price_start" name class="form-label">Start Harga</label>
+                                <input type="number" name="price_start" class="form-control @error('price_start') is-invalid @enderror" id="price_start" value="{{ $marker->price_start }}" >
+                            </div>
+                            <div class="mb-3">
+                                <label for="price_end" name class="form-label">End Harga</label>
+                                <input type="number" name="price_end" class="form-control @error('price_end') is-invalid @enderror" id="price_end" value="{{ $marker->price_end }}" >
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="font-weight-bold">Image</label>
+                                <input type="file" class="form-control @error('image') is-invalid @enderror" name="image">
 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
+                                <!-- error message untuk image -->
+                                @error('image')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="font-weight-bold">Link</label>
+                                <textarea class="form-control @error('link') is-invalid @enderror" name="link" rows="5" placeholder="Masukkan Link">{{ $marker->link }}</textarea>
+
+                                @error('description')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="font-weight-bold">Nav-Link</label>
+                                <textarea class="form-control @error('navlink') is-invalid @enderror" name="navlink" rows="5" placeholder="Masukkan Nav-Link">{{$marker->navlink}}</textarea>
+
+                                @error('description')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
                 </form>
                 </div>
             </div>

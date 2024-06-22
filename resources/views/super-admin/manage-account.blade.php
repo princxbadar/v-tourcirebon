@@ -31,7 +31,9 @@
                             <td>{{ $data->email}}</td>
                             <td>{{ $data->role}}</td>
                             <td>
-                               <a href="" class="badge rounded-pill text-bg-danger" data-toggle="modal" data-target="">Delete</a>
+                                <form action="{{ route('manage.delete-user', $data->id) }}" method="POST">
+                                    @csrf  @method('DELETE') <button type="submit" class="badge rounded-pill text-bg-danger">Delete</button>
+                                  </form>
                             </td>
                         </tr>
                         @empty

@@ -29,10 +29,10 @@
                             <td>{{ $data->id}}</td>
                             <td>{{ $data->catName}}</td>
                             <td>
-                                <a href="" class="badge rounded-pill text-bg-primary" data-toggle="modal" data-target="#updateCoorModal">Update</a>
-                                <a href="" class="badge rounded-pill text-bg-info" data-bs-toggle="modal" data-bs-target="#detailModal">Detail</a>
-                                <a href="" class="badge rounded-pill text-bg-danger" data-toggle="modal" data-target="">Delete</a>
-                            </td>
+                                <button class="badge rounded-pill text-bg-primary" data-bs-toggle="modal" data-bs-target="#updateCoord-{{ $data->id }}">Update</button>
+                                <form action="{{ route('manage.delete-categories', $data->id) }}" method="POST">
+                                    @csrf  @method('DELETE') <button type="submit" class="badge rounded-pill text-bg-danger">Delete</button>
+                                  </form>                            </td>
                         </tr>
                         @empty
                         <div class="alert alert-danger">
@@ -70,5 +70,32 @@
             </div>
         </div>
     </div>
+    <!-- Update Modal -->
+    @foreach ($categories as $data)
+        <div class="modal fade modal-xl" id="updateCoord-{{ $data->id }}" tabindex="-1" aria-labelledby="updateCoord" aria-hidden="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateCoorModalLabel">Create Categories</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <form action="{{route('manage.update-categories', ['id' => $data->id])}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('patch')
+                    <div class="mb-3">
+                        <label for="catName" name class="form-label">Nama Kategori</label>
+                        <input type="text" name="catName" class="form-control @error('catName') is-invalid @enderror" id="catName" value="{{ $data->catName }}" >
+                    </div>
 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
 </x-dashboard-layout>

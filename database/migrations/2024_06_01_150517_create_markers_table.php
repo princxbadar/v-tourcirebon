@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('image');
             $table->string('longitude');
             $table->string('latitude');
-            $table->bigInteger('price');
+            $table->bigInteger('price_start');
+            $table->bigInteger('price_end');
             $table->text('link');
             $table->text('navlink');
             $table->timestamps();

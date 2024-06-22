@@ -72,6 +72,10 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-location-dot"></i></div>
                                 3D-Tour Management
                             </a>
+                            <a class="nav-link" href="{{ route('admin.manage-accomodation') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-location-dot"></i></div>
+                                Accomodation Management
+                            </a>
                             @if (Auth::user()->role == 'super_admin')
                                 <a class="nav-link" href="{{ route('manage.categories') }}">
                                     <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>

@@ -17,7 +17,8 @@ class Marker extends Model
         'image',
         'longitude',
         'latitude',
-        'price',
+        'price_start',
+        'price_end',
         'link',
         'navlink',
     ];
