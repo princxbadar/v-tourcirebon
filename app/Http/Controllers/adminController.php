@@ -17,10 +17,10 @@ class adminController extends Controller
         // $markers = Marker::latest()->paginate(10);
         $markers = Marker::join('categories', 'categories.id', '=', 'markers.categories_id')
                  ->select('markers.id', 'markers.tempat', 'markers.keterangan', 
-                          'markers.categories_id', 'markers.latitude', 'markers.longitude', 
-                          'markers.link', 'categories.catName AS catName') // Alias for category name
+                          'markers.categories_id', 'markers.image','price','markers.link','markers.navlink', 'categories.catName AS catName') // Alias for category name
                  ->get();
-        
+
+
         // ambil data kategori
         $data['categories'] = Category::all();
         
@@ -28,16 +28,6 @@ class adminController extends Controller
         return view('admin.3d-tour-management',compact('markers'),$data);
     }
 
-    
-    public function create():View
-    {
-        // Get All Marker
-        // $markers = Marker::latest()->paginate(10);
-        $markers = Marker::join('categories','categories.id', '=','markers.categories_id')->get();
-        // ambil data kategori
-        $data['categories'] = Category::all();
-        return view('admin.create-marker',compact('markers'),$data);
-    }
        /**
      *
      * @param  mixed $request
@@ -46,46 +36,29 @@ class adminController extends Controller
 
     public function createMarker(Request $request): RedirectResponse
     {
-        try {
-            $request->validate([
-                'tempat' => 'required',
-                'keterangan' => 'required',
-                'price'=> 'required|numeric',
-                'latitude' => 'required|numeric',
-                'longitude' => 'required|numeric',
-                'link' => 'required',
-                'navlink' => 'required'
-            ]);
-    
-            // Data preparation
-            $params = [
-                'tempat' => $request->tempat,
-                'keterangan' => $request->keterangan,
-                'categories_id' => (int) $request->categories_id,
-                'price' =>$request->price,
-                'latitude' => $request->latitude,
-                'longitude' => $request->longitude,
-                'link' => $request->link,
-                'navlink' => $request->navlink
-            ];
-    
-            // Marker creation
-            $insert = Marker::create($params);
-    
-            // Redirection with success message
-            return redirect()->route('admin.manage-tour')->with(['success' => 'Data Berhasil Disimpan!']);
-        } catch (ValidationException $e) {
-            dd($e->validator->errors());
-            // Handle validation errors
-            return back()->withErrors($e->validator->errors());
-        }
-    }
+        $request->validate([
+            'tempat' => 'required',
+            'keterangan' => 'required',
+            'image' => 'required|image|mimes:jpeg,jpg,png',
+            'categories_id'=>'required',
+            'price'=> 'required|numeric',
+            'link'=> 'required',
+            'navlink' => 'required'
+        ]);
+            //Upload Gambar
+            $image = $request->file('image');
+            $image->storeAs('public/thumbnail', $image->hashName());
 
-    public function detailMarker(string $id): View {
-
-        $markers = Marker::findOrFail($id);
-
-        return view('admin.3d-tour-management',compact('markers'));
+        Marker::create([
+            'tempat' => $request->tempat,
+            'keterangan' => $request->keterangan,
+            'categories_id' => $request->categories_id,
+            'image'=> $image->hashName(),
+            'price' => $request->price,
+            'link' => $request->link,
+            'navlink' => $request->navlink
+        ]);
+        return redirect()->route('admin.manage-tour')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     public function update(Request $request,Marker $marker): RedirectResponse
@@ -93,10 +66,8 @@ class adminController extends Controller
         $request->validate([
             'tempat' => 'required',
             'keterangan' => 'required',
+            'image' => 'required|numeric',
             'price'=> 'required|numeric',
-            'latitude' => 'required|numeric',
-            'longitude' => 'required|numeric',
-            'link' => 'required',
             'navlink' => 'required'
         ]);
         // get data by ID
@@ -104,10 +75,8 @@ class adminController extends Controller
         $marker->update([
             'tempat' => $request->tempat,
             'keterangan' => $request->keterangan,
+            'image'=> $request->image,
             'price' => $request->price,
-            'latitude'=> $request->latitude,
-            'longitude'=> $request->longitude,
-            'link' => $request->link,
             'navlink' => $request->navlink
         ]);
         dd($marker);

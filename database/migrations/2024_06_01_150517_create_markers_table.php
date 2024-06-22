@@ -16,11 +16,10 @@ return new class extends Migration
             $table->string('tempat');
             $table->text('keterangan');
             $table->integer('categories_id');
+            $table->string('image');
             $table->bigInteger('price');
-            $table->string('latitude');
-            $table->string('longitude');
-            $table->string('link');
-            $table->string('navlink');
+            $table->text('link');
+            $table->text('navlink');
             $table->timestamps();
         });
     }

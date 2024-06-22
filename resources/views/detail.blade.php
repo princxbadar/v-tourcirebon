@@ -1,9 +1,20 @@
 <x-layout>
+  <section>
+    <div class="container-fluid bg-color py-5 rounded">
 
+      <div class="row justify-content-center">
+        <div class="col-md-10 text-center">
+          <code>
+            <p>{!!$markers->link!!}</p>
+          </code>
+        </div>
+      </div>
+    </div>
+    </section>
     <section>
     <div class="container">
       <div class="row text-center">
-        <div class="col"><h1 class="my-4">{{ $markers->tempat }}</h1></div>
+        <div class="col"><h1 class="py-4">{{ $markers->tempat }}</h1></div>
       </div>
       <div class="row mb-5 justify-content-center">
         <div class="col-md-10 text-center">
@@ -16,11 +27,58 @@
     </section>
 
     <section>
-        <div class="container-fluid my-5">
-            <div class="d-flex justify-content-center">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.388219196723!2d108.56524907475513!3d-6.722393093273556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6ee25deaaaaaab%3A0xb5cb14c3d5f80987!2sKeraton%20Kanoman!5e0!3m2!1sid!2sid!4v1718679988987!5m2!1sid!2sid" width="1200" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+      <div class="container-fluid bg-color py-5">
+
+        <div class="row justify-content-center">
+          <div class="col-md-10 text-center">
+            <code>
+              <p>{!!$markers->navlink!!}</p>
+            </code>
+          </div>
         </div>
+      </div>
+      </section>
+      
+    <section>
+      <div class="row py-5 justify-content-center">
+        <div class="col-md-10 text-center">
+          <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" frameborder="0" width="800" height="400"></iframe>
+        </div>
+      </div>
     </section>
+
+    <section class="">
+      <div class="container-fluid bg-color py-5">
+
+<div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="card-wrapper container-sm d-flex  justify-content-around">
+          @foreach ($marker as $mrkr)
+            <div class="card"  style="width: 16rem";> 
+              <a href="" >
+                <img src="{{ asset('image/kanoman1.jpeg') }}" class="card-img-top" alt="Project1">
+              </a>
+              
+              <div class="card-body">
+                <h5 class="card-title text-center">{{$mrkr->tempat}}</h5>
+              </div>
+              <div class="card-footer text-body-secondary text-center">V-Tour</div>
+            </div>
+            @endforeach
+</div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  </div>
+</div>
+</section>
 
 </x-layout>

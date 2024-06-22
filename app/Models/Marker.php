@@ -14,9 +14,8 @@ class Marker extends Model
         'tempat',
         'keterangan',
         'categories_id',
+        'image',
         'price',
-        'latitude',
-        'longitude',
         'link',
         'navlink',
     ];

@@ -22,7 +22,11 @@ class homepageController extends Controller
     }
     public function detail(): View {
        $id = Route::current()->parameter('id');
+       $marker = Marker::join('categories','categories.id', '=','markers.categories_id')->get();
+        
+       // ambil data kategori
+       $data['categories'] = Category::all();
        $markers = Marker::findOrFail($id);
-       return view('detail',compact('markers'));
+       return view('detail',compact('markers'),compact('marker'),$data);
     }
 }
