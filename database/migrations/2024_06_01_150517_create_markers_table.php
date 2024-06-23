@@ -15,12 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('tempat');
             $table->text('keterangan');
+            $table->string('address');
             $table->integer('categories_id');
             $table->string('image');
             $table->string('longitude');
             $table->string('latitude');
             $table->bigInteger('price_start');
             $table->bigInteger('price_end');
+            $table->text('youtube_link');
             $table->text('link');
             $table->text('navlink');
             $table->timestamps();

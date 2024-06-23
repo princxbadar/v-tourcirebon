@@ -18,6 +18,7 @@
                             <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
+                            <th scope="col">Address</th>
                             <th scope="col">Markers Name</th>
                             <th scope="col">Price Start</th>
                             <th scope="col">Price End</th>
@@ -31,6 +32,7 @@
                             <tr>
                                 <th scope="row"><?= $i++; ?></th>
                                 <td>{{ $data->name}}</td>
+                                <td>{{ $data->accomodation_address}}</td>
                                 <td>{{ $data->tempat}}</td>
                                 <td>{{ $data->start_price}}</td>
                                 <td>{{ $data->end_price}}</td>
@@ -68,6 +70,10 @@
                     <div class="mb-3">
                         <label for="name" name class="form-label">Nama Tempat</label>
                         <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ old('name') }}" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="accomodation_address" name class="form-label">Alamat Akomodasi</label>
+                        <input type="text" name="accomodation_address" class="form-control @error('accomodation_address') is-invalid @enderror" id="accomodation_address" value="{{ old('accomodation_address') }}" >
                     </div>
                     <div class="mb-3">
                         <select name="markers_id" class="form-control @error('markers_id') is-invalid @enderror" aria-label="Default select example">
@@ -128,6 +134,10 @@
               <div class="mb-3">
                   <label for="name" name class="form-label">Nama Tempat</label>
                   <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ $data->name }}" >
+              </div>
+              <div class="mb-3">
+                  <label for="accomodation_address" name class="form-label">Alamat Akomodasi</label>
+                  <input type="text" name="accomodation_address" class="form-control @error('accomodation_address') is-invalid @enderror" id="accomodation_address" value="{{ $data->accomodation_address }}" >
               </div>
                 <div class="mb-3">
                     <select name="markers_id" class="form-control @error('markers_id') is-invalid @enderror" aria-label="Default select example">

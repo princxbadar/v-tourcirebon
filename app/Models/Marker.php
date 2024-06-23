@@ -13,12 +13,14 @@ class Marker extends Model
     protected $fillable = [
         'tempat',
         'keterangan',
+        'address',
         'categories_id',
         'image',
         'longitude',
         'latitude',
         'price_start',
         'price_end',
+        'youtube_link',
         'link',
         'navlink',
     ];

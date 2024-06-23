@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('accomodations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('accomodation_address');
             $table->bigInteger('markers_id');
             $table->bigInteger('start_price');
             $table->bigInteger('end_price');

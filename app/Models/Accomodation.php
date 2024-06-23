@@ -10,6 +10,7 @@ class Accomodation extends Model
     use HasFactory;
     protected $fillable = [
         'name',
+        'accomodation_address',
         'markers_id',
         'start_price',
         'end_price',
