@@ -43,18 +43,21 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                     <div class="card-wrapper container-sm d-flex justify-content-around">
-                        @foreach ($marker as $mrkr)
-                            <div class="card"  style="width: 16rem";>
-                                <a href="">
-                                    <img src="{{ asset('image/kanoman1.jpeg') }}" class="card-img-top" alt="Project1">
-                                </a>
+                        @foreach ($accommodations as $accommodation)
+                            <a href="{{ url($accommodation->traveloka_link) }}">
+                                <div class="card">
+                                    <img src="{{ asset('storage/thumbnail/' . $accommodation->thumb_img) }}" class="card-img-top" alt="Project1">
 
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">{{$mrkr->tempat}}</h5>
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">
+                                            {{$accommodation->name}}
+                                        </h5>
+                                        <p class="text-center">
+                                            {{ "Rp " . number_format($accommodation->start_price,2,',','.') }} sampai {{ "Rp " . number_format($accommodation->end_price,2,',','.') }}
+                                        </p>
+                                    </div>
                                 </div>
-
-                                <div class="card-footer text-body-secondary text-center">V-Tour</div>
-                            </div>
+                            </a>
                         @endforeach
                     </div>
 
