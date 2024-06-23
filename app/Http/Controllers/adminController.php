@@ -14,6 +14,17 @@ use Illuminate\Validation\ValidationException;
 
 class adminController extends Controller
 {
+    public function viewDashboard(): View {
+        // Get All Marker
+        // $markers = Marker::latest()->paginate(10);
+        $markers = Marker::join('categories', 'categories.id', '=', 'markers.categories_id')
+                 ->select('markers.id', 'markers.tempat', 'markers.keterangan','markers.address', 'markers.latitude','markers.longitude',
+                          'markers.categories_id', 'markers.image','markers.price_start','markers.price_end','markers.youtube_link','markers.link','markers.navlink', 'categories.catName AS catName') // Alias for category name
+                 ->get();
+
+        return view('dashboard', compact('markers'));
+    }
+
     public function view3DTourManagement(): View {
         // Get All Marker
         // $markers = Marker::latest()->paginate(10);
@@ -25,8 +36,6 @@ class adminController extends Controller
 
         // ambil data kategori
         $data['categories'] = Category::all();
-
-
 
         // Return View
         return view('admin.3d-tour-management',compact('markers'),$data);

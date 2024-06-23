@@ -22,12 +22,8 @@ Route::get('/homepage', [homepageController::class, 'index'])->name('homepage');
 
 Route::get('/detail-page/{id}', [homepageController::class, 'detail'])->name('detail');
 
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [adminController::class, 'viewDashboard'])->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -36,6 +32,7 @@ Route::middleware('auth')->group(function () {
 // For all the admin accessible site
 Route::middleware([isAdmin::class])->prefix('/admin')->name('admin.')->group(function () {
     // Route::resource('/markers',\App\Http\Controllers\adminController::class);
+    Route::get('/dashboard', [adminController::class, 'viewDashboard'])->name('dashboard');
     Route::get('/tour-management', [adminController::class, 'view3DTourManagement'])->name('manage-tour');
     Route::get('/detail-marker', [adminController::class, 'detailMarker'])->name('detail-marker');
     Route::post('/create-marker', [adminController::class, 'createMarker'])->name('create-marker');

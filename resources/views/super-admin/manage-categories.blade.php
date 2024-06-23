@@ -1,13 +1,13 @@
 <x-dashboard-layout>
 <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Categories Management</h1>
+            <h1 class="mt-4">Manajemen Kategori</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Categories Management</li>
+                <li class="breadcrumb-item active">Ubah, Tambah, dan Hapus kategori</li>
             </ol>
 
             <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#insertCategoriesModal">
-            Add New Categories
+                Tambahkan Kategori
             </button>
 
 
@@ -16,9 +16,10 @@
                 <table class="table">
                     <thead>
                         <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Categories ID</th>
-                        <th scope="col">Categories Name</th>
+                            <th scope="col">#</th>
+                            <th scope="col">ID Kategori</th>
+                            <th scope="col">Nama</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,10 +30,11 @@
                             <td>{{ $data->id}}</td>
                             <td>{{ $data->catName}}</td>
                             <td>
-                                <button class="badge rounded-pill text-bg-primary" data-bs-toggle="modal" data-bs-target="#updateCoord-{{ $data->id }}">Update</button>
-                                <form action="{{ route('manage.delete-categories', $data->id) }}" method="POST">
-                                    @csrf  @method('DELETE') <button type="submit" class="badge rounded-pill text-bg-danger">Delete</button>
-                                  </form>                            </td>
+                                <div class="d-flex justify-content-end align-items-center">
+                                    <button class="btn btn-primary btn-rounded me-2" data-bs-toggle="modal" data-bs-target="#updateCoord-{{ $data->id }}">Ubah</button>
+                                    <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteCat-{{ $data->id }}">Hapus</button>
+                                </div>
+                            </td>
                         </tr>
                         @empty
                         <div class="alert alert-danger">
@@ -50,7 +52,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="insertCategoriesModalLabel">Create Categories</h5>
+                <h5 class="modal-title" id="insertCategoriesModalLabel">Buat Kategori</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -63,8 +65,8 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-primary">Buat</button>
             </form>
             </div>
             </div>
@@ -76,7 +78,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="updateCoorModalLabel">Create Categories</h5>
+                    <h5 class="modal-title" id="updateCoorModalLabel">Ubah Kategori</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -90,10 +92,32 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </form>
                 </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade modal-xl" id="deleteCat-{{ $data->id }}" tabindex="-1" aria-labelledby="deleteCat" aria-hidden="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateCoorModalLabel">Hapus Kategori</h5>
+                    </div>
+                    <form action="{{ route('manage.delete-categories', $data->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <div class="modal-body">
+                            <p class="text-gray-900">
+                                Apakah anda yakin ingin menghapus kategori <b>{{ $data->catName }}</b>?
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn btn-danger">Hapus</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

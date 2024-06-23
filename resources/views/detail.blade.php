@@ -12,7 +12,10 @@
         <div class="d-flex justify-content-center align-items-center">
             <div class="row py-5">
                 <div class="col-lg-6 col-md-6 col-sm-12">
-                    <h1 class="py-4">{{ $markers->tempat }}</h1>
+                    <h1>{{ $markers->tempat }}</h1>
+                    <h6 class="py-4">
+                        {{ $markers->address }}
+                    </h6>
                     <code>
                         <p>{!!$markers->keterangan!!}</p>
                     </code>
@@ -28,7 +31,9 @@
                     </div>
                     <h1 class="py-4 text-center">Ulasan</h1>
                     <div class="d-flex justify-content-center align-items-center">
-                        <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" frameborder="0" width="600" height="400"></iframe>
+                        <code>
+                            <p>{!! $markers->youtube_link !!}</p>
+                        </code>
                     </div>
                 </div>
             </div>

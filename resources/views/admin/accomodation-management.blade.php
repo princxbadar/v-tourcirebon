@@ -1,13 +1,13 @@
 <x-dashboard-layout>
     <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Accomodation Management</h1>
+                <h1 class="mt-4">Manajemen Akomodasi</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item active">Accomodation Management</li>
+                    <li class="breadcrumb-item active">Tambah, Ubah, dan Hapus Akomodasi</li>
                 </ol>
 
                 <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#insertAccomodationModal">
-                Add New Accomodation
+                    Tambahkan Akomodasi
                 </button>
 
 
@@ -16,14 +16,15 @@
                     <table class="table">
                         <thead>
                             <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Address</th>
-                            <th scope="col">Markers Name</th>
-                            <th scope="col">Price Start</th>
-                            <th scope="col">Price End</th>
-                            <th scope="col">Image</th>
-                            <th scope="col">Traveloka Link</th>
+                                <th scope="col">#</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Alamat</th>
+                                <th scope="col">Nama Marker</th>
+                                <th scope="col">Harga dari</th>
+                                <th scope="col">Harga sampai</th>
+                                <th scope="col">Gambar</th>
+                                <th scope="col">Link Traveloka</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,15 +40,19 @@
                                 <td>{{ $data->thumb_image}}</td>
                                 <td>{{ $data->traveloka_link}}</td>
                                 <td>
-                                    <button class="badge rounded-pill text-bg-primary" data-bs-toggle="modal" data-bs-target="#updateAccomodation-{{ $data->id }}">Update</button>
-                                    <form action="{{ route('admin.delete-accomodation', $data->id) }}" method="POST">
-                                        @csrf  @method('DELETE') <button type="submit" class="badge rounded-pill text-bg-danger">Delete</button>
-                                      </form>
+                                    <div class="d-flex justify-content-end align-items-center">
+                                        <button class="btn btn-primary btn-rounded me-2" data-bs-toggle="modal" data-bs-target="#updateAccomodation-{{ $data->id }}">Ubah</button>
+                                        <form action="{{ route('admin.delete-accomodation', $data->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Hapus</button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                             @empty
                             <div class="alert alert-danger">
-                            Data belum Tersedia.
+                                Data belum Tersedia.
                             </div>
                         @endforelse
                         </tbody>
@@ -181,6 +186,4 @@
       </div>
   </div>
 @endforeach
-
-
-    </x-dashboard-layout>
+</x-dashboard-layout>

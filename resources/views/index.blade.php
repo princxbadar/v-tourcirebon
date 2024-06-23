@@ -14,20 +14,19 @@
 
     </head>
     <body>
-        <main>                        
+        <main>
                 <div class="banner">
                     <img src="{{ asset('image/background.jpg') }}"  alt="" style="max-width: 100%; max-height:100%;" >
                     <div class="banner-text text-center">
-                       
-                    <h1>V-Tour</h1>
-                        <h4>Virtual Tour Kota Cirebon</h4>
-                        <a href="{{route('homepage')}}" class="btn btn-primary">INILOGO</a>
 
+                    <h1>V-TOUR</h1>
+                    <h4>Virtual Tour Kota Cirebon</h4>
+                    <a href="{{route('homepage')}}" class="btn btn-primary">Jelajahi</a>
                     </div>
                 </div>
 
-                
-            
+
+
 
 
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

@@ -1,13 +1,13 @@
 <x-dashboard-layout>
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Marker Management</h1>
+            <h1 class="mt-4">Manajemen Marker</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Marker Management</li>
+                <li class="breadcrumb-item active">Tambah, Ubah, dan Hapus Marker</li>
             </ol>
 
             <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#insertMarkerModal">
-                Add New Coordinate
+                Tambahkan Koordinat
             </button>
 
 
@@ -46,10 +46,10 @@
                                 <td>{{ $marker->youtube_link }}</td>
                                 <td>{{ $marker->navlink }}</td>
                                 <td>
-                                    <a href="" class="badge rounded-pill text-bg-info" data-bs-toggle="modal" data-bs-target="#detailModal{{$marker->id}}">Update</a>
-                                    <form action="{{ route('admin.delete-marker', $marker->id) }}" method="POST">
-                                        @csrf  @method('DELETE') <button type="submit" class="badge rounded-pill text-bg-danger">Delete</button>
-                                    </form>
+                                    <div class="d-flex justify-content-end align-items-center">
+                                        <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#detailModal{{$marker->id}}">Ubah</button>
+                                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModalCoord{{$marker->id}}">Hapus</button>
+                                    </div>
                                 </td>
                             </tr>
                         @empty
@@ -68,7 +68,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="insertMarkerModalLabel">Create Marker</h5>
+                    <h5 class="modal-title" id="insertMarkerModalLabel">Tambah Koordinat</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="{{route('admin.create-marker')}}" method="POST" enctype="multipart/form-data">
@@ -162,8 +162,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-primary">Buat</button>
                 </div>
             </form>
             </div>
@@ -175,7 +175,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="detailModalLabel">Create Marker</h5>
+                        <h5 class="modal-title" id="detailModalLabel">Ubah Koordinat</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
                     </div>
@@ -272,13 +272,35 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn btn-primary">Ubah</button>
                         </div>
                 </form>
                 </div>
             </div>
         </div>
-
+        <div class="modal fade modal-xl" id="deleteModalCoord{{$marker->id}}" tabindex="-1" aria-labelledby="deleteModalCoordLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalCoordLabel">Hapus Koordinat</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="{{ route('admin.delete-marker', $marker->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <div class="modal-body">
+                            <p class="text-gray-900">
+                                Apakah anda yakin ingin menghapus koordinat untuk <b>{{ $marker->tempat }}</b>?
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn btn-danger">Hapus</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     @endforeach
 </x-dashboard-layout>
