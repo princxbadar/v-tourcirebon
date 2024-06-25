@@ -18,15 +18,11 @@
                             <tr>
                                 <th>#</th>
                                 <th>Nama Tempat</th>
-                                <th>Alamat</th>
-                                <th>Keterangan</th>
                                 <th>Kategori</th>
                                 <th>Latitude</th>
                                 <th>Longitude</th>
-                                <th>Image</th>
-                                <th>Harga</th>
-                                <th>Youtube Link</th>
-                                <th>Nav Link</th>
+                                <th>Harga Dari</th>
+                                <th>Harga Sampai</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -36,17 +32,13 @@
                             <tr>
                                 <th scope="row"><?= $i++; ?></th>
                                 <td>{{ $marker->tempat}}</td>
-                                <td>{{ $marker->address}}</td>
-                                <td>{{ $marker->keterangan }}</td>
                                 <td>{{ $marker->catName }}</td>
                                 <td>{{ $marker->latitude }}</td>
                                 <td>{{ $marker->longitude }}</td>
-                                <td>{{ $marker->image }}</td>
                                 <td>{{ "Rp " . number_format($marker->price_start,2,',','.') }}</td>
-                                <td>{{ $marker->youtube_link }}</td>
-                                <td>{{ $marker->navlink }}</td>
+                                <td>{{ "Rp " . number_format($marker->price_end,2,',','.') }}</td>
                                 <td>
-                                    <div class="d-flex justify-content-end align-items-center">
+                                    <div class="d-flex justify-content-start align-items-center">
                                         <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#detailModal{{$marker->id}}">Ubah</button>
                                         <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModalCoord{{$marker->id}}">Hapus</button>
                                     </div>
@@ -177,105 +169,103 @@
                     <div class="modal-header">
                         <h5 class="modal-title" id="detailModalLabel">Ubah Koordinat</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
                     </div>
                     <form action="{{route('admin.update-marker', ['id' => $marker->id])}}" method="POST" enctype="multipart/form-data">
                         <div class="modal-body">
-                        @csrf
-                        @method('patch')
-                        <div class="mb-3">
+                            @csrf
+                            @method('patch')
                             <div class="mb-3">
-                                <label for="tempat" name class="form-label">Nama Tempat</label>
-                                <input type="text" name="tempat" class="form-control @error('tempat') is-invalid @enderror" id="tempat" value="{{ $marker->tempat }}" >
-                            </div>
-                            <div class="mb-3">
-                                <label for="address" name class="form-label">Alamat</label>
-                                <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" id="address" value="{{ $marker->address }}" >
-                            </div>
-                            <div class="form-group mb-3">
-                                <label class="font-weight-bold">Keterangan</label>
-                                <textarea class="form-control @error('keterangan') is-invalid @enderror" name="keterangan" rows="5" placeholder="Masukkan Keterangan">{{$marker->keterangan}}</textarea>
+                                <div class="mb-3">
+                                    <label for="tempat" name class="form-label">Nama Tempat</label>
+                                    <input type="text" name="tempat" class="form-control @error('tempat') is-invalid @enderror" id="tempat" value="{{ $marker->tempat }}" >
+                                </div>
+                                <div class="mb-3">
+                                    <label for="address" name class="form-label">Alamat</label>
+                                    <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" id="address" value="{{ $marker->address }}" >
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="font-weight-bold">Keterangan</label>
+                                    <textarea class="form-control @error('keterangan') is-invalid @enderror" name="keterangan" rows="5" placeholder="Masukkan Keterangan">{{$marker->keterangan}}</textarea>
 
-                                @error('description')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
-                            <select name="categories_id" class="form-control @error('categories_id') is-invalid @enderror" aria-label="Default select example">
-                                <option selected>Kategori</option>
+                                    @error('description')
+                                        <div class="alert alert-danger mt-2">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <select name="categories_id" class="form-control @error('categories_id') is-invalid @enderror" aria-label="Default select example">
+                                        <option selected>Kategori</option>
 
-                                @foreach ($categories as $data )
+                                        @foreach ($categories as $data )
+                                            <option value="{{$data->id}}">{{ $data->catName  }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="latitude" name class="form-label">Latitude</label>
+                                    <input type="text" name="latitude" class="form-control @error('latitude') is-invalid @enderror" id="latitude" value="{{ $marker->latitude }}" >
+                                </div>
+                                <div class="mb-3">
+                                    <label for="longitude" name class="form-label">Longitude</label>
+                                    <input type="text" name="longitude" class="form-control @error('longitude') is-invalid @enderror" id="longitude" value="{{ $marker->longitude }}" >
+                                </div>
+                                <div class="mb-3">
+                                    <label for="price_start" name class="form-label">Start Harga</label>
+                                    <input type="number" name="price_start" class="form-control @error('price_start') is-invalid @enderror" id="price_start" value="{{ $marker->price_start }}" >
+                                </div>
+                                <div class="mb-3">
+                                    <label for="price_end" name class="form-label">End Harga</label>
+                                    <input type="number" name="price_end" class="form-control @error('price_end') is-invalid @enderror" id="price_end" value="{{ $marker->price_end }}" >
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="font-weight-bold">Image</label>
+                                    <input type="file" class="form-control @error('image') is-invalid @enderror" name="image">
 
-                                <option value="{{$data->id}}">{{ $data->catName  }}</option>
-                                @endforeach
-                                </select>
+                                    <!-- error message untuk image -->
+                                    @error('image')
+                                        <div class="alert alert-danger mt-2">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="font-weight-bold">Youtube Link</label>
+                                    <textarea class="form-control @error('youtube_link') is-invalid @enderror" name="youtube_link" rows="5" placeholder="Masukkan Link Youtube">{{ $marker->youtube_link }}</textarea>
 
-                            </div>
-                            <div class="mb-3">
-                                <label for="latitude" name class="form-label">Latitude</label>
-                                <input type="text" name="latitude" class="form-control @error('latitude') is-invalid @enderror" id="latitude" value="{{ $marker->latitude }}" >
-                            </div>
-                            <div class="mb-3">
-                                <label for="longitude" name class="form-label">Longitude</label>
-                                <input type="text" name="longitude" class="form-control @error('longitude') is-invalid @enderror" id="longitude" value="{{ $marker->longitude }}" >
-                            </div>
-                            <div class="mb-3">
-                                <label for="price_start" name class="form-label">Start Harga</label>
-                                <input type="number" name="price_start" class="form-control @error('price_start') is-invalid @enderror" id="price_start" value="{{ $marker->price_start }}" >
-                            </div>
-                            <div class="mb-3">
-                                <label for="price_end" name class="form-label">End Harga</label>
-                                <input type="number" name="price_end" class="form-control @error('price_end') is-invalid @enderror" id="price_end" value="{{ $marker->price_end }}" >
-                            </div>
-                            <div class="form-group mb-3">
-                                <label class="font-weight-bold">Image</label>
-                                <input type="file" class="form-control @error('image') is-invalid @enderror" name="image">
+                                    @error('description')
+                                        <div class="alert alert-danger mt-2">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="font-weight-bold">Link</label>
+                                    <textarea class="form-control @error('link') is-invalid @enderror" name="link" rows="5" placeholder="Masukkan Link">{{ $marker->link }}</textarea>
 
-                                <!-- error message untuk image -->
-                                @error('image')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group mb-3">
-                                <label class="font-weight-bold">Youtube Link</label>
-                                <textarea class="form-control @error('youtube_link') is-invalid @enderror" name="youtube_link" rows="5" placeholder="Masukkan Link Youtube">{{ $marker->youtube_link }}</textarea>
+                                    @error('description')
+                                        <div class="alert alert-danger mt-2">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="font-weight-bold">Nav-Link</label>
+                                    <textarea class="form-control @error('navlink') is-invalid @enderror" name="navlink" rows="5" placeholder="Masukkan Nav-Link">{{$marker->navlink}}</textarea>
 
-                                @error('description')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group mb-3">
-                                <label class="font-weight-bold">Link</label>
-                                <textarea class="form-control @error('link') is-invalid @enderror" name="link" rows="5" placeholder="Masukkan Link">{{ $marker->link }}</textarea>
-
-                                @error('description')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group mb-3">
-                                <label class="font-weight-bold">Nav-Link</label>
-                                <textarea class="form-control @error('navlink') is-invalid @enderror" name="navlink" rows="5" placeholder="Masukkan Nav-Link">{{$marker->navlink}}</textarea>
-
-                                @error('description')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                                    @error('description')
+                                        <div class="alert alert-danger mt-2">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                             <button type="submit" class="btn btn-primary">Ubah</button>
                         </div>
-                </form>
+                    </form>
                 </div>
             </div>
         </div>

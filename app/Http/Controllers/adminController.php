@@ -38,7 +38,7 @@ class adminController extends Controller
         $data['categories'] = Category::all();
 
         // Return View
-        return view('admin.3d-tour-management',compact('markers'),$data);
+        return view('admin.3d-tour-management', compact('markers'), $data);
     }
 
        /**

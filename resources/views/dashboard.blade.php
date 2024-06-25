@@ -12,11 +12,16 @@
                 <div id="map" style="width: 100%; height: 400px;"></div>
                 <script>
                     var map = L.map('map').setView([-6.706117145755258, 108.55783199712985], 13);
-
                     var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    maxZoom: 19,
-                    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                        maxZoom: 19,
+                        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                     }).addTo(map);
+
+                    // Setting Marker
+                    @foreach ($markers as $marker)
+                        L.marker([{{ $marker->latitude }}, {{ $marker->longitude }}])
+                        .bindPopup('<a href="{{route('detail', $marker->id)}}" class="text-decoration-none"><h2>{{ $marker->tempat }}</h2></a>').addTo(map);
+                    @endforeach
                 </script>
             </div>
             <h1 class="text-gray-900">
@@ -33,6 +38,7 @@
                                 <th>Kategori</th>
                                 <th>Latitude</th>
                                 <th>Longitude</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,6 +51,9 @@
                                 <td>{{ $marker->catName }}</td>
                                 <td>{{ $marker->latitude }}</td>
                                 <td>{{ $marker->longitude }}</td>
+                                <td>
+                                    <a href="{{route('detail', $marker->id)}}" class="btn btn-primary">Lihat</a>
+                                </td>
                             </tr>
                         @empty
                             <div class="alert alert-danger">
