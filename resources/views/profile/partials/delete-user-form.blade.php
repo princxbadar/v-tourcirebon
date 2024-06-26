@@ -1,11 +1,11 @@
 <section>
     <header>
         <h2 class="">
-            {{ __('Delete Account') }}
+            {{ __('Hapus Akun') }}
         </h2>
 
         <p class="mt-1">
-            {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.') }}
+            {{ __('Ketika anda menghapus akun, semua data yang terkait akun ini akan dihapus secara permanen. Silahkan simpan semua data penting sebelum anda menghapus akun.') }}
         </p>
     </header>
 
@@ -28,11 +28,11 @@
             @method('delete')
 
             <h2">
-                {{ __('Are you sure you want to delete your account?') }}
+                {{ __('Apakah anda yakin ingin mengapus akun ini?') }}
             </h2>
 
             <p>
-                {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.') }}
+                {{ __('Ketika anda menghapus akun, semua data yang terkait akun ini akan dihapus secara permanen. Mohon masukan password akun ini sebagai konfirmasi penghapusan.') }}
             </p>
 
             <div>
@@ -50,8 +50,8 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <x-danger-button class="ms-3">{{ __('Delete Account') }}</x-danger-button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            <x-danger-button class="ms-3">{{ __('Hapus') }}</x-danger-button>
         </div>
         </form>
         </div>

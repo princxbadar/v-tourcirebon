@@ -1,30 +1,30 @@
 <x-dashboard-layout>
     <main>
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Edit Profile</h1>
+        <h1 class="mt-4">Ubah Profil</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">Edit Profile</li>
+            <li class="breadcrumb-item active">Atur akun-mu, ganti email, nama, serta ubah password disini</li>
         </ol>
-        
+
         <!-- Name &Email Edit -->
         <div class="container">
             <div class="row">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        @include('profile.partials.update-profile-information-form')            
+                        @include('profile.partials.update-profile-information-form')
                     </div>
                 </div>
             </div>
             </div>
-        </div> 
+        </div>
         <!-- Password Edit -->
         <div class="container mt-3">
             <div class="row">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        @include('profile.partials.update-password-form')          
+                        @include('profile.partials.update-password-form')
                     </div>
                 </div>
             </div>
@@ -36,12 +36,12 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        @include('profile.partials.delete-user-form')          
+                        @include('profile.partials.delete-user-form')
                     </div>
                 </div>
             </div>
             </div>
-        </div> 
+        </div>
 
     </div>
     </main>

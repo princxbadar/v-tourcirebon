@@ -38,9 +38,9 @@
                             </div>
                         </form>
                     </div>
-                    <div class="card-footer text-center py-3">
+                    {{-- <div class="card-footer text-center py-3">
                         <div class="small"><a href="register">Butuh akun? daftar disini</a></div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

@@ -25,7 +25,7 @@
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <input class="form-control" type="text" placeholder="Cari..." aria-label="Cari..." aria-describedby="btnNavbarSearch" />
                     <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
                 </div>
             </form>
@@ -36,7 +36,7 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <!-- Edit Profile -->
                         <x-dropdown-link :href="route('profile.edit')">
-                                {{ __('Profile') }}
+                                Profil
                         </x-dropdown-link>
                         <!-- LogOut -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -58,34 +58,35 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <div class="sb-sidenav-menu-heading">Utama</div>
                             <a class="nav-link" href="{{ route('dashboard') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
                             <a class="nav-link" href="{{route('profile.edit')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-solid fa-user"></i></div>
-                                {{ __('Profile') }}
+                                Profil
                             </a>
-                            <div class="sb-sidenav-menu-heading">Tour Management</div>
+
+                            <div class="sb-sidenav-menu-heading">Manajemen Objek Wisata</div>
                             <a class="nav-link" href="{{ route('admin.manage-tour') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-location-dot"></i></div>
-                                3D-Tour Management
+                                Marker
                             </a>
-                            <a class="nav-link" href="{{ route('admin.manage-accomodation') }}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-location-dot"></i></div>
-                                Accomodation Management
-                            </a>
+
+                            <div class="sb-sidenav-menu-heading">Super Admin</div>
                             @if (Auth::user()->role == 'super_admin')
+                                <a class="nav-link" href="{{ route('admin.manage-accomodation') }}">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-location-dot"></i></div>
+                                    Akomodasi
+                                </a>
                                 <a class="nav-link" href="{{ route('manage.categories') }}">
                                     <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
-                                    Categories Management
+                                    Kategori
                                 </a>
-                            <div class="sb-sidenav-menu-heading">Super Admin</div>
-
                                 <a class="nav-link" href="{{ route('manage.accounts') }}">
                                     <div class="sb-nav-link-icon"><i class="fas fa-address-card"></i></div>
-                                    Manage Account
+                                    Manajemen Akun
                                 </a>
                             @endif
 
@@ -95,7 +96,7 @@
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
+                        <div class="small">Anda Masuk sebagai:</div>
                         {{ Auth::user()->name }}
                     </div>
                 </nav>

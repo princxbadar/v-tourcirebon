@@ -18,7 +18,7 @@
             <div
                 class="bg-image d-flex justify-content-center align-items-center"
                 style="
-                    background-image: url('{{ asset("image/background.jpg") }}');
+                    background-image: url('{{ asset("image/carousel-1.jpg") }}');
                     height: 100vh;
                 "
             >
