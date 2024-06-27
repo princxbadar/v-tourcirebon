@@ -69,7 +69,7 @@
                             <input type="password" name="password" required autocomplete="new-password" class="form-control @error('password') is-invalid @enderror" id="password" value="{{ old('password') }}" >
                         </div>
                         <div class="mb-3">
-                            <label for="password_confirmation" name class="form-label">Password Confirmation</label>
+                            <label for="password_confirmation" name class="form-label">Konfirmasi Password</label>
                             <input type="password" name="password_confirmation" required autocomplete="new-password" class="form-control @error('password') is-invalid @enderror" id="password_confirmation" value="{{ old('password') }}" >
                         </div>
                     </div>
