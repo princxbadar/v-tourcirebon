@@ -11,7 +11,7 @@
 
     <!-- Button trigger modal -->
         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confrimationDelete">
-        Delete Account
+        Hapus Akun
         </button>
 
     <!-- Modal -->
@@ -19,7 +19,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Delete Account</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Hapus Akun</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">

@@ -71,18 +71,18 @@
                             <div class="sb-sidenav-menu-heading">Manajemen Objek Wisata</div>
                             <a class="nav-link" href="{{ route('admin.manage-tour') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-location-dot"></i></div>
-                                Marker
+                                Manajemen Tur 3D
                             </a>
 
                             <div class="sb-sidenav-menu-heading">Super Admin</div>
                             @if (Auth::user()->role == 'super_admin')
                                 <a class="nav-link" href="{{ route('admin.manage-accomodation') }}">
                                     <div class="sb-nav-link-icon"><i class="fas fa-location-dot"></i></div>
-                                    Akomodasi
+                                    Manajemen Akomodasi
                                 </a>
                                 <a class="nav-link" href="{{ route('manage.categories') }}">
                                     <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
-                                    Kategori
+                                    Manajemen Kategori
                                 </a>
                                 <a class="nav-link" href="{{ route('manage.accounts') }}">
                                     <div class="sb-nav-link-icon"><i class="fas fa-address-card"></i></div>

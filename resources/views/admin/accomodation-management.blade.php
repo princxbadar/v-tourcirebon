@@ -7,7 +7,7 @@
             </ol>
 
             <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#insertAccomodationModal">
-                Tambahkan Akomodasi
+                Tambah Akomodasi
             </button>
 
 
@@ -62,7 +62,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="insertAccomodationModalLabel">Create Accomodation</h5>
+                <h5 class="modal-title" id="insertAccomodationModalLabel">Tambah Akomodasi</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -111,7 +111,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
             </div>
@@ -125,7 +125,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="updateAccomodationModalLabel">Update Accomodation</h5>
+                    <h5 class="modal-title" id="updateAccomodationModalLabel">Ubah Akomodasi</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -175,7 +175,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Ubah</button>
                 </form>
                 </div>
                 </div>
@@ -185,7 +185,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="deleteAccomodation-Label">Hapus Koordinat</h5>
+                        <h5 class="modal-title" id="deleteAccomodation-Label">Hapus Akomodasi</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form action="{{ route('admin.delete-accomodation', $data->id) }}" method="POST">
@@ -193,7 +193,7 @@
                         @method('DELETE')
                         <div class="modal-body">
                             <p class="text-gray-900">
-                                Apakah anda yakin ingin menghapus akun untuk <b>{{ $data->name }}</b>?
+                                Apakah anda yakin ingin menghapus akomodasi untuk <b>{{ $data->name }}</b>?
                             </p>
                         </div>
                         <div class="modal-footer">

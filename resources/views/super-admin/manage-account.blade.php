@@ -1,13 +1,13 @@
 <x-dashboard-layout>
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Account Management</h1>
+            <h1 class="mt-4">Manajemen Akun</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Account Management</li>
+                <li class="breadcrumb-item active">Manajemen Akun</li>
             </ol>
 
             <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#insertUserModal">
-                Register User
+                Daftarkan Akun
             </button>
 
             <div class="card mb-4">
@@ -50,7 +50,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="insertUserModalLabel">Create Categories</h5>
+                    <h5 class="modal-title" id="insertUserModalLabel">Pendaftaran Akun</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form method="POST" action="{{ route('manage.create-user') }}">
@@ -87,7 +87,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="deleteUser-Label">Hapus Koordinat</h5>
+                        <h5 class="modal-title" id="deleteUser-Label">Hapus Akun</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form action="{{ route('manage.delete-user', $data->id) }}" method="POST">
