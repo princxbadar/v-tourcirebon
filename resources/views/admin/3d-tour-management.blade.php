@@ -23,6 +23,7 @@
                                 <th>Longitude</th>
                                 <th>Harga Dari</th>
                                 <th>Harga Sampai</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
