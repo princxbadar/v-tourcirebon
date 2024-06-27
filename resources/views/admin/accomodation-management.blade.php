@@ -10,7 +10,7 @@
                 Tambah Akomodasi
             </button>
 
-
+            @include('components.success-message')
             <div class="card mb-4">
                 <div class="card-body">
                 <table class="table">
