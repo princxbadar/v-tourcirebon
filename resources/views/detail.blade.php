@@ -78,7 +78,7 @@
                                         @foreach ($accommodations as $accommodation)
                                             <a class="text-decoration-none" href="{{ url($accommodation->traveloka_link) }}">
                                                 <div class="card">
-                                                    <img src="{{ asset('storage/thumbnail/' . $accommodation->thumb_img) }}" class="card-img-top" style="height: 500px" alt="Project1">
+                                                    <img src="{{ asset('storage/thumbnail/' . $accommodation->thumb_img) }}" class="card-img-top"  alt="Project1">
 
                                                     <div class="card-body">
                                                         <h5 class="card-title text-center">

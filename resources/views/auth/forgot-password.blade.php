@@ -17,10 +17,10 @@
                             </div>
                             <div class="d-flex justify-content-center mt-4 mb-0">
                                 <x-primary-button>
-                                    {{ __('Email Password Reset Link') }}
+                                    {{ __('Atur Ulang') }}
                                 </x-primary-button>
                             </div>
-                        </f>
+                        </form>
                     </div>
                     <div class="card-footer text-center py-3">
                     </div>

@@ -23,7 +23,6 @@
                                 <th>Longitude</th>
                                 <th>Harga Dari</th>
                                 <th>Harga Sampai</th>
-                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
