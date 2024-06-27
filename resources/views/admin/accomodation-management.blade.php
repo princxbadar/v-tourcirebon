@@ -77,8 +77,8 @@
                     <input type="text" name="accomodation_address" class="form-control @error('accomodation_address') is-invalid @enderror" id="accomodation_address" value="{{ old('accomodation_address') }}" >
                 </div>
                 <div class="mb-3">
-                    <select name="markers_id" class="form-control @error('markers_id') is-invalid @enderror" aria-label="Default select example">
-                        <option selected>Nama Tempat</option>
+                    <select name="markers_id" class="form-select @error('markers_id') is-invalid @enderror" aria-label="Default select example">
+                        <option selected>Nama Marker</option>
                         @foreach ($markers as $data )
                             <option value="{{$data->id}}">{{ $data->tempat  }}</option>
                         @endforeach
@@ -141,8 +141,8 @@
                         <input type="text" name="accomodation_address" class="form-control @error('accomodation_address') is-invalid @enderror" id="accomodation_address" value="{{ $data->accomodation_address }}" >
                     </div>
                     <div class="mb-3">
-                        <select name="markers_id" class="form-control @error('markers_id') is-invalid @enderror" aria-label="Default select example">
-                            <option selected>Nama Tempat</option>
+                        <select name="markers_id" class="form-select @error('markers_id') is-invalid @enderror" aria-label="Default select example">
+                            <option selected>Nama Marker</option>
                             @foreach ($markers as $marker )
                                 <option value="{{$marker->id}}">{{ $marker->tempat  }}</option>
                             @endforeach
