@@ -1,13 +1,13 @@
 <x-dashboard-layout>
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Manajemen Marker</h1>
+            <h1 class="mt-4">Manajemen Objek Pariwisata</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Tambah, Ubah, dan Hapus Marker</li>
+                <li class="breadcrumb-item active">Tambah, Ubah, dan Hapus Objek Pariwisata</li>
             </ol>
 
             <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#insertMarkerModal">
-                Tambah Marker
+                Tambah Objek Pariwisata
             </button>
 
             @include('components.success-message')
@@ -60,7 +60,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="insertMarkerModalLabel">Tambah Marker</h5>
+                    <h5 class="modal-title" id="insertMarkerModalLabel">Tambah Objek Pariwisata</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="{{route('admin.create-marker')}}" method="POST" enctype="multipart/form-data">
@@ -167,7 +167,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="detailModalLabel">Ubah Marker</h5>
+                        <h5 class="modal-title" id="detailModalLabel">Ubah Objek Pariwisata</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form action="{{route('admin.update-marker', ['id' => $marker->id])}}" method="POST" enctype="multipart/form-data">
@@ -273,7 +273,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="deleteModalCoordLabel">Hapus Marker</h5>
+                        <h5 class="modal-title" id="deleteModalCoordLabel">Hapus Objek Pariwisata</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form action="{{ route('admin.delete-marker', $marker->id) }}" method="POST">
@@ -281,7 +281,7 @@
                         @method('DELETE')
                         <div class="modal-body">
                             <p class="text-gray-900">
-                                Apakah anda yakin ingin menghapus marker untuk <b>{{ $marker->tempat }}</b>?
+                                Apakah anda yakin ingin menghapus Objek Pariwisata untuk <b>{{ $marker->tempat }}</b>?
                             </p>
                         </div>
                         <div class="modal-footer">

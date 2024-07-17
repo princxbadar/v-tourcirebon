@@ -57,7 +57,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            <form action="{{route('manage.create-categories')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('admin.create-categories')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="catName" name class="form-label">Nama Kategori</label>
@@ -83,7 +83,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                <form action="{{route('manage.update-categories', ['id' => $data->id])}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('admin.update-categories', ['id' => $data->id])}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('patch')
                     <div class="mb-3">
@@ -106,7 +106,7 @@
                     <div class="modal-header">
                         <h5 class="modal-title" id="updateCoorModalLabel">Hapus Kategori</h5>
                     </div>
-                    <form action="{{ route('manage.delete-categories', $data->id) }}" method="POST">
+                    <form action="{{ route('admin.delete-categories', $data->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <div class="modal-body">

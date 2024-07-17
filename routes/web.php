@@ -42,14 +42,14 @@ Route::middleware([isAdmin::class])->prefix('/admin')->name('admin.')->group(fun
     Route::post('/create-accomodation', [adminController::class, 'createAccomodation'])->name('create-accomodation');
     Route::patch('/update-accomodation/{id}', [adminController::class, 'updateAccomodation'])->name('update-accomodation');
     Route::delete('/delete-accomodation/{id}', [adminController::class, 'destroyAccomodation'])->name('delete-accomodation');
-
-});
-
-Route::middleware([IsSuperAdmin::class])->prefix('/manage')->name('manage.')->group(function () {
     Route::get('/categories',[SuperAdminController::class, 'showManageCategories'])->name('categories');
     Route::post('/create-categories',[SuperAdminController::class, 'createCategories'])->name('create-categories');
     Route::patch('/update-categories/{id}', [SuperAdminController::class, 'updateCategory'])->name('update-categories');
     Route::delete('/delete-categories/{id}', [SuperAdminController::class, 'destroyCategories'])->name('delete-categories');
+
+});
+
+Route::middleware([IsSuperAdmin::class])->prefix('/manage')->name('manage.')->group(function () {
     Route::get('/accounts', [SuperAdminController::class, 'showManageAccount'])->name('accounts');
     Route::post('/create-user', [SuperAdminController::class, 'addUser'])->name('create-user');
     Route::delete('/delete-user/{id}', [SuperAdminController::class, 'destroyUser'])->name('delete-user');

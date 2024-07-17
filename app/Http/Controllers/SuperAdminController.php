@@ -36,7 +36,7 @@ class SuperAdminController extends Controller
             $insert = Category::create($params);
 
             // Redirection with success message
-            return redirect()->route('manage.categories')->with(['success' => 'Data Berhasil Disimpan!']);
+            return redirect()->route('admin.categories')->with(['success' => 'Data Berhasil Disimpan!']);
         } catch (ValidationException $e) {
             dd($e->validator->errors());
             // Handle validation errors
@@ -54,7 +54,7 @@ class SuperAdminController extends Controller
         $categories->update([
             'catName' => $request->catName
         ]);
-        return redirect()->route('manage.categories')->with(['success' => 'Data Berhasil Disimpan!']);
+        return redirect()->route('admin.categories')->with(['success' => 'Data Berhasil Disimpan!']);
 
     }
     public function showManageAccount(): View {
@@ -76,7 +76,7 @@ class SuperAdminController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-            return redirect()->route('manage.accounts')->with(['success' => 'Data Berhasil Disimpan!']);
+            return redirect()->route('admin.accounts')->with(['success' => 'Data Berhasil Disimpan!']);
     }
     public function destroyCategories($id)
     {
@@ -86,7 +86,7 @@ class SuperAdminController extends Controller
             //delete categories
             $categories->delete();
         //redirect to index
-        return redirect()->route('manage.categories')->with(['success' => 'Data Berhasil Dihapus!']);
+        return redirect()->route('admin.categories')->with(['success' => 'Data Berhasil Dihapus!']);
     }
 
     public function destroyUser($id)

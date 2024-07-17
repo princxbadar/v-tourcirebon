@@ -24,4 +24,9 @@ class Marker extends Model
         'link',
         'navlink',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

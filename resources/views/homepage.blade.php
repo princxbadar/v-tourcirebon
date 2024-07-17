@@ -33,6 +33,51 @@
                             </div>
                         </div>
                     </div>
+                    {{-- Divider --}}
+                    <div class="col-12">
+                        <hr>
+                    </div>
+                    <!-- resources/views/your-view.blade.php -->
+                    <div class="col-12">
+                        <div class="text-center">
+                            <h4 class="text-gray-900">
+                                Objek Pariwisata
+                            </h4>
+                            <p><small>Temukan banyak keindahan pariwisata cirebon yang telah kami sajikan dibawah ini</small></p>
+                        </div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" id="categoryTab" role="tablist">
+                            @foreach ($categories as $category)
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link {{ $loop->first ? 'active' : '' }}" id="tab-{{ $category->id }}" data-bs-toggle="tab" href="#category-{{ $category->id }}" role="tab" aria-controls="category-{{ $category->id }}" aria-selected="{{ $loop->first ? 'true' : 'false' }}">
+                                        {{ $category->catName }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content" id="categoryTabContent">
+                            @foreach ($categories as $category)
+                                <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="category-{{ $category->id }}" role="tabpanel" aria-labelledby="tab-{{ $category->id }}">
+                                    <div class="row g-3 mt-3">
+                                        @foreach ($markers->where('categories_id', $category->id) as $mrkr)
+                                            <div class="col-12 col-md-6 col-lg-4">
+                                                <x-marker-card :mrkr="$mrkr" />
+                                            </div>
+                                        @endforeach
+
+                                        @if ($markers->where('categories_id', $category->id)->isEmpty())
+                                            <div class="col-12">
+                                                <p class="text-center text-muted">Tidak ada objek wisata di kategori ini.</p>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                     <div class="col-12">
                         <hr>
                     </div>
@@ -61,33 +106,7 @@
                             </script>
                         </div>
                     </div>
-                    {{-- Divider --}}
-                    <div class="col-12">
-                        <hr>
-                    </div>
-                    <div class="col-12">
-                        <div class="text-center">
-                            <h4 class="text-gray-900">
-                                Objek Pariwisata
-                            </h4>
-                            <p><small>Temukan banyak keindahan pariwisata cirebon yang telah kami sajikan dibawah ini</small></p>
-                        </div>
-                        <div class="row g-3">
-                            @foreach ($markers as $mrkr)
-                                <div class="col-12 col-md-6 col-lg-4">
-                                    <a class="text-decoration-none text-gray-900" href="{{route('detail', $mrkr->id)}}" >
-                                        <div class="card w-100">
-                                            <img src="{{ asset('storage/thumbnail/' . $mrkr->image) }}" class="card-img-top" alt="Project1">
-
-                                            <div class="card-body">
-                                                <h5 class="card-title text-center">{{$mrkr->tempat}}</h5>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>

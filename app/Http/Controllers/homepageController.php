@@ -12,16 +12,11 @@ use Illuminate\View\View;
 class homepageController extends Controller
 {
     public function index(): View {
-        $markers = Marker::join('categories', 'categories.id', '=', 'markers.categories_id')
-                 ->select('markers.id', 'markers.tempat', 'markers.keterangan', 'markers.latitude','markers.longitude',
-                          'markers.categories_id', 'markers.image','markers.price_start','markers.price_end','markers.link','markers.navlink', 'categories.catName AS catName') // Alias for category name
-                 ->get();
-
-        // ambil data kategori
-        $data['categories'] = Category::all();
+        $categories = Category::all();
+        $markers = Marker::all(); // Adjust the number to your preference
 
         // Return View
-        return view('homepage',compact('markers'),$data);
+        return view('homepage',compact('markers', 'categories'));
     }
 
     public function detail(): View {

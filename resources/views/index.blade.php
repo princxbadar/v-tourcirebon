@@ -15,22 +15,28 @@
     </head>
     <body>
         <main>
+            <!-- Make it look more professional and aesthetics -->
             <div
                 class="bg-image d-flex justify-content-center align-items-center"
                 style="
+                    background-size: cover;
+                    background-position: center;
                     background-image: url('{{ asset("image/carousel-1.jpg") }}');
                     height: 100vh;
                 "
             >
-                <div class="text-center text-gray-900 bg-light rounded p-5 opacity-100">
-                    <h1>V-TOUR</h1>
-                    <h4>Virtual Tour Kota Cirebon</h4>
-                    <p>
-                        Jelajahi pariwisata Kota Cirebon, kunjungi objek - objek wisata yang banyak nan indah dari Kota Cirebon.
-                        <br>
-                        Alami Kota Cirebon dengan cara baru melalui virtual tour.
-                    </p>
-                    <a href="{{route('homepage')}}" class="btn btn-outline-primary">Jelajahi</a>
+                <!-- Blur this out -->
+                <div class="bg-light rounded p-5 opacity-75">
+                    <div class="text-center text-gray-900 opacity-100">
+                        <h1>V-TOUR</h1>
+                        <h4>Virtual Tour Kota Cirebon</h4>
+                        <p>
+                            Jelajahi pariwisata Kota Cirebon, kunjungi objek - objek wisata yang banyak nan indah dari Kota Cirebon.
+                            <br>
+                            Alami Kota Cirebon dengan cara baru melalui virtual tour.
+                        </p>
+                        <a href="{{route('homepage')}}" class="btn btn-outline-primary">Jelajahi</a>
+                    </div>
                 </div>
             </div>
             <script src="js/scripts.js"></script>

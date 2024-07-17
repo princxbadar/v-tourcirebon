@@ -12,7 +12,7 @@
 
             @include('components.success-message')
             <div class="card mb-4">
-                <div class="card-body">
+                <div class="card-body table-responsive">
                 <table class="table">
                     <thead>
                         <tr>
