@@ -53,7 +53,7 @@
                     <h5 class="modal-title" id="insertUserModalLabel">Pendaftaran Akun</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form method="POST" action="{{ route('admin.create-user') }}">
+                <form method="POST" action="{{ route('manage.create-user') }}">
                     <div class="modal-body">
                         @csrf
                         <div class="mb-3">

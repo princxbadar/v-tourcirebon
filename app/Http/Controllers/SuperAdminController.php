@@ -76,7 +76,7 @@ class SuperAdminController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-            return redirect()->route('admin.accounts')->with(['success' => 'Data Berhasil Disimpan!']);
+            return redirect()->route('manage.accounts')->with(['success' => 'Data Berhasil Disimpan!']);
     }
     public function destroyCategories($id)
     {
