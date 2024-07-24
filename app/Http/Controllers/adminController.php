@@ -262,7 +262,7 @@ class adminController extends Controller
             //delete
             $markers->delete();
         //redirect to index
-        return redirect()->route('admin.manage-accomodation')->with(['success' => 'Data Berhasil Dihapus!']);
+        return redirect()->route('admin.manage-tour')->with(['success' => 'Data Berhasil Dihapus!']);
     }
 
 }
