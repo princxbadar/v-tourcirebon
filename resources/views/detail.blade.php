@@ -26,12 +26,6 @@
                                         </div>
                                         <h5>Alamat:</h5>
                                         <h6>{{ $markers->address }}</h6>
-                                        <h5>Destinasi Terdekat:</h5>
-                                        <ul class="list-unstyled">
-                                            <li><i class="fas fa-map-marker-alt"></i> Nasi Jagal Ibu Ida</li>
-                                            <li><i class="fas fa-map-marker-alt"></i> Masjid Ar-rahman Cirebon</li>
-                                            <li><i class="fas fa-map-marker-alt"></i> Aula Serba Guna Gunawarman</li>
-                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -58,11 +52,6 @@
                                     <code>
                                         <p>{!! $markers->youtube_link !!}</p>
                                     </code>
-                                </div>
-                                <div class="text-start">
-                                    <p><strong>Review 1:</strong> "Tempat yang sangat indah dan menakjubkan!" - 8/10</p>
-                                    <p><strong>Review 2:</strong> "Sangat cocok untuk liburan keluarga." - 9/10</p>
-                                    <p><strong>Review 3:</strong> "Pelayanan sangat baik dan ramah." - 7/10</p>
                                 </div>
                             </div>
                         </div>
