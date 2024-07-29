@@ -206,7 +206,7 @@ class adminController extends Controller
         $accomodations = Accomodation::findOrFail($id);
 
         //check if image is uploaded
-        if ($request->hasFile('image')) {
+        if ($request->hasFile('thumb_img')) {
 
             //upload new image
             $image = $request->file('thumb_img');
@@ -228,7 +228,7 @@ class adminController extends Controller
 
         } else {
 
-            //update markers without image
+            //update accomodations without image
             $accomodations->update([
                 'name' => $request->name,
                 'accomodation_address' => $request->accomodation_address,
